@@ -9,6 +9,8 @@ export default class TitleScene extends Phaser.Scene {
   preload() {
     this.background = this.add.tileSprite(0, 0, config.width, config.height, "background");
     this.background.setOrigin(0, 0);
+    // add logo image
+    (this.add.image(config.width/2, config.height/2 - 200, 'logo')).setScale(0.5);
   }
   create () {
     // Game

@@ -15,11 +15,13 @@ export default class GameScene extends Phaser.Scene {
 
   create () {
     this.gender = undefined;
+    this.avatar = 'defaultAvatar';
+    this.avatarImage = this.add.image(config.width/2, config.height/2, this.avatar);
     console.log("Gender:" + this.gender);
     
-    this.genderText = this.add.text(250, 190, 'Gender', { fontSize: 24, fontFamily: "arcade_classic" });
-    this.genderMale = this.add.text(350, 190, 'Male', { fontSize: 24, fontFamily: "arcade_classic" });
-    this.genderFemale = this.add.text(425, 190, 'Female', { fontSize: 24, fontFamily: "arcade_classic" });
+    this.genderText = this.add.text(250, config.height/2 - 200, 'Gender:', { fontSize: 24, fontFamily: "arcade_classic" });
+    this.genderMale = this.add.text(350, config.height/2 - 200, 'Male', { fontSize: 24, fontFamily: "arcade_classic" });
+    this.genderFemale = this.add.text(425, config.height/2 - 200, 'Female', { fontSize: 24, fontFamily: "arcade_classic" });
 
     this.genderMale.setInteractive();
     this.genderFemale.setInteractive();
@@ -28,19 +30,32 @@ export default class GameScene extends Phaser.Scene {
       this.gender = "male";
       this.genderMale.setColor("red");
       this.genderFemale.setColor("white");
-      console.log("Gender:" + this.gender);
+      this.avatar = 'maleAvatar';
+      this.avatarImage.destroy();
+      this.avatarImage = this.add.image(config.width/2, config.height/2, this.avatar);
+      if (this.gender = "male") {
+        this.playButton = new Button(this, 400, 500, 'blueButton1', 'blueButton2', 'Play', 'Instructions', {gender: this.gender});
+      }
+      console.log("Gender: " + this.gender);
     }.bind(this));
 
     this.genderFemale.on('pointerdown', function () {
       this.gender = "female";
       this.genderFemale.setColor("red");
       this.genderMale.setColor("white");
-      console.log("Gender:" + this.gender);
+      this.avatar = 'femaleAvatar';
+      this.avatarImage.destroy();
+      this.avatarImage = this.add.image(config.width/2, config.height/2, this.avatar);
+      if (this.gender = "female") {
+        this.playButton = new Button(this, 400, 500, 'blueButton1', 'blueButton2', 'Play', 'Instructions', {gender: this.gender});
+      }
+      console.log("Gender: " + this.gender);
     }.bind(this));
 
-    this.lifestageText = this.add.text(250, 290, 'Life Stage', { fontSize: 24, fontFamily: "arcade_classic" });
-    
-    this.menuButton = new Button(this, 400, 500, 'blueButton1', 'blueButton2', 'Menu', 'Title');
+    // For future lifestages
+    // this.lifestageText = this.add.text(250, 290, 'Life Stage', { fontSize: 24, fontFamily: "arcade_classic" });
+  
+    this.menuButton = new Button(this, 150, 50, 'blueButton1', 'blueButton2', 'Back', 'Title');
 
   }
 };
