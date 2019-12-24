@@ -15,13 +15,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
     //  You can either do this:
     scene.add.existing(this);
     scene.physics.add.existing(this);
-
+    
     //  Set some default physics properties
     this.setScale(2);
+    scene.physics.world.setBoundsCollision();
     //TODO: Collision
-    
-    this.body.onWorldBounds = true;
-
+    this.body.setCollideWorldBounds(true);
     this.vel = 160;
   }
 
