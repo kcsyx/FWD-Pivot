@@ -1,15 +1,15 @@
 import 'phaser';
 
 export default class PreloaderScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Preloader');
   }
 
-  init () {
+  init() {
     this.readyCount = 0;
   }
 
-  preload () {
+  preload() {
     // display progress bar
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
@@ -87,9 +87,40 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('maleAvatar', 'assets/male.png');
     this.load.image('femaleAvatar', 'assets/female.png');
     this.load.image('instructions', 'assets/instructions.png');
+    this.load.spritesheet('player', 'assets/samplesprite.png', { frameWidth: 16, frameHeight: 18 });
   }
 
-  ready () {
+  create() {
+    this.anims.create({
+      key: 'left',
+      frames: this.anims.generateFrameNumbers('player', { start: 6, end: 8 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'right',
+      frames: this.anims.generateFrameNumbers('player', { start: 9, end: 11 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'up',
+      frames: this.anims.generateFrameNumbers('player', { start: 3, end: 5 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'down',
+      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 2 }),
+      frameRate: 13,
+      repeat: -1
+    });
+  }
+
+  ready() {
     this.scene.start('Title');
     this.readyCount++;
     if (this.readyCount === 2) {

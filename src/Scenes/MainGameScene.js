@@ -1,5 +1,6 @@
 import 'phaser';
 import config from '../Config/config';
+import Player from '../Objects/Player';
 
 export default class MainGameScene extends Phaser.Scene {
     constructor() {
@@ -15,6 +16,8 @@ export default class MainGameScene extends Phaser.Scene {
     }
 
     create() {
+        // Add player to current scene
+        new Player(this, 300, 300);
     }
 
 };
