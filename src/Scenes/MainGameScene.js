@@ -1,6 +1,7 @@
 import 'phaser';
 import config from '../Config/config';
 import Player from '../Objects/Player';
+import FPlayer from '../Objects/FPlayer';
 
 export default class MainGameScene extends Phaser.Scene {
     constructor() {
@@ -17,7 +18,11 @@ export default class MainGameScene extends Phaser.Scene {
 
     create() {
         // Add player to current scene
-        new Player(this, 300, 300);
+        if (this.gender == "male") {
+            new Player(this, 300, 300);
+        } else if (this.gender == "female") {
+            new FPlayer(this, 300, 300);
+        }
     }
 
 };

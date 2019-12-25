@@ -88,6 +88,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('femaleAvatar', 'assets/female.png');
     this.load.image('instructions', 'assets/instructions.png');
     this.load.spritesheet('player', 'assets/samplesprite.png', { frameWidth: 16, frameHeight: 18 });
+    this.load.spritesheet('fplayer', 'assets/fsamplesprite.png', { frameWidth: 32, frameHeight: 32 });
   }
 
   create() {
@@ -115,6 +116,34 @@ export default class PreloaderScene extends Phaser.Scene {
     this.anims.create({
       key: 'down',
       frames: this.anims.generateFrameNumbers('player', { start: 0, end: 2 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'fleft',
+      frames: this.anims.generateFrameNumbers('fplayer', { start: 8, end: 11 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'fright',
+      frames: this.anims.generateFrameNumbers('fplayer', { start: 12, end: 15 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'fup',
+      frames: this.anims.generateFrameNumbers('fplayer', { start: 4, end: 7 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'fdown',
+      frames: this.anims.generateFrameNumbers('fplayer', { start: 0, end: 3 }),
       frameRate: 13,
       repeat: -1
     });
