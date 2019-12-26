@@ -8,7 +8,9 @@ export default {
   physics: {
     default: 'arcade',
     arcade: {
-      debug: false,
+      //SET TO TRUE to see  hitboxes
+      debug: true,
+      
       gravity: { y: 0 }
     }
   }
