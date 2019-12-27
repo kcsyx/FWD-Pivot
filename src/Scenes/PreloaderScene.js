@@ -87,63 +87,121 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('maleAvatar', 'assets/male.png');
     this.load.image('femaleAvatar', 'assets/female.png');
     this.load.image('instructions', 'assets/instructions.png');
-    this.load.spritesheet('player', 'assets/samplesprite.png', { frameWidth: 16, frameHeight: 18 });
-    this.load.spritesheet('fplayer', 'assets/fsamplesprite.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('maleplayer', 'assets/samplesprite.png', { frameWidth: 16, frameHeight: 18 });
+    this.load.spritesheet('femaleplayer', 'assets/femalesamplesprite.png', { frameWidth: 32, frameHeight: 32 });
   }
 
   create() {
+    // Male player animations
     this.anims.create({
-      key: 'left',
-      frames: this.anims.generateFrameNumbers('player', { start: 6, end: 8 }),
+      key: 'malestand-left',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 6, end: 6 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
-      key: 'right',
-      frames: this.anims.generateFrameNumbers('player', { start: 9, end: 11 }),
+      key: 'malestand-right',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 9, end: 9 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
-      key: 'up',
-      frames: this.anims.generateFrameNumbers('player', { start: 3, end: 5 }),
+      key: 'malestand-up',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 3, end: 3 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
-      key: 'down',
-      frames: this.anims.generateFrameNumbers('player', { start: 0, end: 2 }),
+      key: 'malestand-down',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 0, end: 0 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
-      key: 'fleft',
-      frames: this.anims.generateFrameNumbers('fplayer', { start: 8, end: 11 }),
+      key: 'malewalk-left',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 6, end: 8 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
-      key: 'fright',
-      frames: this.anims.generateFrameNumbers('fplayer', { start: 12, end: 15 }),
+      key: 'malewalk-right',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 9, end: 11 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
-      key: 'fup',
-      frames: this.anims.generateFrameNumbers('fplayer', { start: 4, end: 7 }),
+      key: 'malewalk-up',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 3, end: 5 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
-      key: 'fdown',
-      frames: this.anims.generateFrameNumbers('fplayer', { start: 0, end: 3 }),
+      key: 'malewalk-down',
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 0, end: 2 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    //Female player animations
+    this.anims.create({
+      key: 'femalestand-left',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 11, end: 11 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'femalestand-right',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 15, end: 15 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'femalestand-up',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 5, end: 5 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'femalestand-down',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 0, end: 0 }),
+      frameRate: 13,
+      repeat: -1
+    });
+    
+    this.anims.create({
+      key: 'femalewalk-left',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 8, end: 11 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'femalewalk-right',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 12, end: 15 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'femalewalk-up',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 4, end: 7 }),
+      frameRate: 13,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'femalewalk-down',
+      frames: this.anims.generateFrameNumbers('femaleplayer', { start: 0, end: 3 }),
       frameRate: 13,
       repeat: -1
     });
