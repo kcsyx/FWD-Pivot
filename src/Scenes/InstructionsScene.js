@@ -17,9 +17,11 @@ export default class InstructionsScene extends Phaser.Scene {
     }
 
     create() {
+        this.cameras.main.fadeIn(1000);
+
         this.background.setInteractive();
         this.background.on('pointerdown', function () {
-            this.scene.start('MainGame', {gender: this.gender});
+            this.scene.start('MainGame', { gender: this.gender });
         }.bind(this));
     }
 
