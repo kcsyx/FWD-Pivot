@@ -27,7 +27,7 @@ export default class MainGameScene extends Phaser.Scene {
         } else if (this.gender == "female") {
             this.player = new FemalePlayer(this, 300, 300);
         }
-
+        this.cameras.main.startFollow(this.player);
         //tentative map
         let level1 = this.add.tilemap("level1");
         let castle = level1.addTilesetImage("castle", "castle", 32, 32);
@@ -40,13 +40,13 @@ export default class MainGameScene extends Phaser.Scene {
         // Add collisions.
         this.physics.add.collider(this.player, wallsLayer);
         this.physics.add.collider(this.player, tablesLayer);
-        // NOT WORKING - interact with table when near
-        this.physics.add.collider(this.player, tablesLayer, function() {
-            this.input.keyboard.on("keydown-" + "E", function() {
+        // TODO KEY INTERACTION
+        let keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        tablesLayer.setTileLocationCallback(24, 18, 1, 1, function () {
+            if (keyE.isDown) {
                 console.log("Interacted!");
-            });
+            };
         });
-
         //end tentative map
     }
 
