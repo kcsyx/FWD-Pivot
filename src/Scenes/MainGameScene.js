@@ -29,25 +29,33 @@ export default class MainGameScene extends Phaser.Scene {
         }
         this.cameras.main.startFollow(this.player);
         //tentative map
-        let level1 = this.add.tilemap("level1");
-        let castle = level1.addTilesetImage("castle", "castle", 32, 32);
-        let floorLayer = level1.createStaticLayer("floor", castle, 0, 0).setDepth(-1);
-        let wallsLayer = level1.createStaticLayer("walls", castle, 0, 0);
-        let tablesLayer = level1.createStaticLayer("tables", castle, 0, 0);
+        this.level1 = this.add.tilemap("level1");
+        this.castle = this.level1.addTilesetImage("castle", "castle", 32, 32);
+        this.floorLayer = this.level1.createStaticLayer("floor", this.castle, 0, 0).setDepth(-1);
+        this.wallsLayer = this.level1.createStaticLayer("walls", this.castle, 0, 0);
+        this.tablesLayer = this.level1.createStaticLayer("tables", this.castle, 0, 0);
         // Collisions based on layer.
-        wallsLayer.setCollisionByProperty({ collides: true });
-        tablesLayer.setCollisionByProperty({ collides: true });
+        this.wallsLayer.setCollisionByProperty({ collides: true });
+        this.tablesLayer.setCollisionByProperty({ collides: true });
         // Add collisions.
-        this.physics.add.collider(this.player, wallsLayer);
-        this.physics.add.collider(this.player, tablesLayer);
-        // TODO KEY INTERACTION
-        let keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        tablesLayer.setTileLocationCallback(24, 18, 1, 1, function () {
-            if (keyE.isDown) {
-                console.log("Interacted!");
-            };
-        });
+        this.physics.add.collider(this.player, this.wallsLayer);
+        this.physics.add.collider(this.player, this.tablesLayer);
+        // KEY INTERACTION
+        this.interacted = false;
+        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         //end tentative map
+    }
+    update() {
+        if (this.interacted === false) {
+            var self = this;
+            this.tablesLayer.setTileLocationCallback(24, 18, 1, 1, function () {
+                if (self.player.direction == "right" && self.keyE.isDown && self.interacted === false) {
+                    console.log("Interacted!");
+                    //TODO DIALOG
+                    self.interacted = true;
+                };
+            });
+        }
     }
 
 };
