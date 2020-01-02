@@ -16,6 +16,11 @@ export default class MainGameScene extends Phaser.Scene {
         console.log(this.gender);
         this.load.image("castle", "assets/castle.png");
         this.load.tilemapTiledJSON("level1", "assets/level1.json");
+        this.load.scenePlugin({
+            key: 'rexuiplugin',
+            url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexuiplugin.min.js',
+            sceneKey: 'rexUI'
+        });
     }
 
     create() {
@@ -51,8 +56,77 @@ export default class MainGameScene extends Phaser.Scene {
             this.tablesLayer.setTileLocationCallback(24, 18, 1, 1, function () {
                 if (self.player.direction == "right" && self.keyE.isDown && self.interacted === false) {
                     console.log("Interacted!");
-                    //TODO DIALOG
                     self.interacted = true;
+                    self.player.vel = 0;
+                    //DIALOG
+                    var createLabel = function (scene, text, backgroundColor) {
+                        return scene.rexUI.add.label({
+                            background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
+                            text: scene.add.text(0, 0, text, {
+                                fontSize: '24px'
+                            }),
+                            space: {
+                                left: 10,
+                                right: 10,
+                                top: 10,
+                                bottom: 10
+                            }
+                        });
+                    };
+
+                    var dialog = self.rexUI.add.dialog({
+                        x: 400,
+                        y: 300,
+                        background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
+                        title: self.rexUI.add.label({
+                            background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
+                            text: self.add.text(0, 0, 'Cybersecurity Insurance', {
+                                fontSize: '24px'
+                            }),
+                            space: {
+                                left: 15,
+                                right: 15,
+                                top: 10,
+                                bottom: 10
+                            }
+                        }),
+                        content: self.add.text(0, 0, 'DESCRIPTION ', {
+                            fontSize: '24px'
+                        }),
+                        choices: [
+                            createLabel(self, 'Do not insure'),
+                            createLabel(self, 'Insure $1000'),
+                            createLabel(self, 'Insure $2000')
+                        ],
+                        space: {
+                            title: 25,
+                            content: 25,
+                            choice: 15,
+                            left: 25,
+                            right: 25,
+                            top: 25,
+                            bottom: 25,
+                        },
+                        expand: {
+                            content: false,  // Content is a pure text object
+                        }
+                    })
+                        .layout()
+                        .setScrollFactor(0)
+                        .popUp(1000);
+
+                    dialog
+                        .on('button.click', function (button, groupName, index) {
+                            console.log(button.text);
+                            dialog.destroy();
+                            self.player.vel = 200;
+                        }, this)
+                        .on('button.over', function (button, groupName, index) {
+                            button.getElement('background').setStrokeStyle(1, 0xffffff);
+                        })
+                        .on('button.out', function (button, groupName, index) {
+                            button.getElement('background').setStrokeStyle();
+                        });
                 };
             });
         }
