@@ -25,7 +25,6 @@ export default class MainGameScene extends Phaser.Scene {
 
     create() {
         this.cameras.main.fadeIn(1000);
-
         // Add player to current scene
         if (this.gender == "male") {
             this.player = new MalePlayer(this, 300, 300);
@@ -33,6 +32,7 @@ export default class MainGameScene extends Phaser.Scene {
             this.player = new FemalePlayer(this, 300, 300);
         }
         this.cameras.main.startFollow(this.player);
+
         //tentative map
         this.level1 = this.add.tilemap("level1");
         this.castle = this.level1.addTilesetImage("castle", "castle", 32, 32);
@@ -45,10 +45,14 @@ export default class MainGameScene extends Phaser.Scene {
         // Add collisions.
         this.physics.add.collider(this.player, this.wallsLayer);
         this.physics.add.collider(this.player, this.tablesLayer);
+        //end tentative map
+
         // KEY INTERACTION
         this.interacted = false;
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        //end tentative map
+        //Initialize moneybags
+        this.moneyBags = 5000;
+        this.scoreBoard = this.add.text(600, 40, "Cash: "+this.moneyBags, {fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff'}).setScrollFactor(0);
     }
     update() {
         if (this.interacted === false) {
@@ -117,8 +121,16 @@ export default class MainGameScene extends Phaser.Scene {
 
                     dialog
                         .on('button.click', function (button, groupName, index) {
-                            console.log(button.text);
+                            console.log(index, button.text);
                             dialog.destroy();
+                            if(index == 0) {
+                                self.moneyBags = self.moneyBags;
+                            } else if(index == 1){
+                                self.moneyBags -= 1000;
+                            } else if(index == 2){
+                                self.moneyBags -= 2000;
+                            }
+                            self.scoreBoard.setText('Cash: '+self.moneyBags);
                             self.player.vel = 200;
                         }, this)
                         .on('button.over', function (button, groupName, index) {
