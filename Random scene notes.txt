@@ -1,0 +1,48 @@
+init(data){
+amountInsured = data.amountInsuredxxx;
+}
+
+create() {
+	var arr = [nH, minorA, majorA]
+	var itemCS = rnd.pick(arr);
+	var itemEP = rnd.pick(arr);
+}
+
+update() {
+	//on tilecallback?? or random event
+	if (amountInsuredCS = 0) {
+		if (itemCS=nH){
+			moneyBags = moneyBags;
+			dialog popup, click to close
+		}
+		...
+	} else if(amountInsuredCS = 1250) {
+		if (itemCS=nH){
+		moneyBags = moneyBags;
+		dialog popup, nothing happened but u insured 1250 so lose money, click to close
+		}
+		...
+	} else if(...)
+
+	//on tilecallback?? or random event 
+	if (amountInsuredEP = 0) {
+		if (itemEP=nH){
+			moneyBags = moneyBags;
+			dialog popup, click to close
+		}
+		...
+	} else if(amountInsuredEP = 1250) {
+		if (itemEP=nH){
+		moneyBags = moneyBags;
+		dialog popup, nothing happened but u insured 1250 so lose money, click to close
+		}
+		...
+	} else if(...)
+	
+	//on tilecallback go nextscene with data moneybags and gender
+}
+
+
+
+
+

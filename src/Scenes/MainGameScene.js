@@ -55,6 +55,7 @@ export default class MainGameScene extends Phaser.Scene {
         this.scoreBoard = this.add.text(600, 40, "Cash: "+this.moneyBags, {fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff'}).setScrollFactor(0);
     }
     update() {
+        //Interaction 1 this.interacted
         if (this.interacted === false) {
             var self = this;
             this.tablesLayer.setTileLocationCallback(24, 18, 1, 1, function () {
@@ -142,6 +143,8 @@ export default class MainGameScene extends Phaser.Scene {
                 };
             });
         }
+        //Interaction 2 this.interacted2?
+        //If interacted and interacted2 == true then next scene fade in ('nextScene', {gender:this.gender, moneyBags:this.moneybags, amountInsuredCS: this.amountCS, amountInsuredEP: this.amountEP})
     }
 
 };
