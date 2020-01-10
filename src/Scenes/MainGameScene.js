@@ -16,6 +16,7 @@ export default class MainGameScene extends Phaser.Scene {
         console.log(this.gender);
         this.load.image("castle", "assets/castle.png");
         this.load.tilemapTiledJSON("level1", "assets/level1.json");
+        //download min file instead https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexuiplugin.min.js change url to local file
         this.load.scenePlugin({
             key: 'rexuiplugin',
             url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexuiplugin.min.js',
