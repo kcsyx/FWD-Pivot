@@ -17,9 +17,14 @@ export default class MainGameScene extends Phaser.Scene {
         this.load.image("castle", "assets/castle.png");
         this.load.tilemapTiledJSON("level1", "assets/level1.json");
         //download min file instead https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexuiplugin.min.js change url to local file
+        // this.load.scenePlugin({
+        //     key: 'rexuiplugin',
+        //     url: '../Plugins/rexuiplugin.min.js',
+        //     sceneKey: 'rexUI'
+        // });
         this.load.scenePlugin({
             key: 'rexuiplugin',
-            url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexuiplugin.min.js',
+            url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
             sceneKey: 'rexUI'
         });
     }
