@@ -14,8 +14,9 @@ export default class MainGameScene extends Phaser.Scene {
 
     preload() {
         console.log(this.gender);
-        this.load.image("castle", "assets/castle.png");
-        this.load.tilemapTiledJSON("level1", "assets/level1.json");
+        this.load.image("schoolClassrooms", "assets/tiled/School - Classrooms.png");
+        this.load.image("schoolFloor", "assets/tiled/School - Floor.png");
+        this.load.tilemapTiledJSON("level1", "assets/tiled/level1.json");
         //download min file instead https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexuiplugin.min.js change url to local file
         // this.load.scenePlugin({
         //     key: 'rexuiplugin',
@@ -39,19 +40,23 @@ export default class MainGameScene extends Phaser.Scene {
         }
         this.cameras.main.startFollow(this.player);
 
-        //tentative map
+        //map
         this.level1 = this.add.tilemap("level1");
-        this.castle = this.level1.addTilesetImage("castle", "castle", 32, 32);
-        this.floorLayer = this.level1.createStaticLayer("floor", this.castle, 0, 0).setDepth(-1);
-        this.wallsLayer = this.level1.createStaticLayer("walls", this.castle, 0, 0);
-        this.tablesLayer = this.level1.createStaticLayer("tables", this.castle, 0, 0);
+        this.physics.world.setBounds(0,0,this.level1.widthInPixels,this.level1.heightInPixels);
+        this.schoolClassrooms = this.level1.addTilesetImage("deco", "schoolClassrooms", 32, 32);
+        this.schoolFloor = this.level1.addTilesetImage("floor", "schoolFloor", 32, 32);
+        this.floorLayer = this.level1.createStaticLayer("floor", this.schoolFloor, 0, 0).setDepth(-3);
+        this.wallsLayer = this.level1.createStaticLayer("walls", this.schoolFloor, 0, 0).setDepth(-3);
+        this.decoLayer = this.level1.createStaticLayer("deco", this.schoolClassrooms, 0, 0).setDepth(-1);
+        this.decoChairsLayer = this.level1.createStaticLayer("decoChairs", this.schoolClassrooms, 0, 0).setDepth(-1);
+        this.decoWhiteboardLayer = this.level1.createStaticLayer("decoWhiteboard", this.schoolClassrooms, 0, 0);
         // Collisions based on layer.
         this.wallsLayer.setCollisionByProperty({ collides: true });
-        this.tablesLayer.setCollisionByProperty({ collides: true });
+        this.decoLayer.setCollisionByProperty({ collides: true });
         // Add collisions.
         this.physics.add.collider(this.player, this.wallsLayer);
-        this.physics.add.collider(this.player, this.tablesLayer);
-        //end tentative map
+        this.physics.add.collider(this.player, this.decoLayer);
+        //end map
 
         // KEY INTERACTION
         this.interacted = false;
@@ -64,8 +69,8 @@ export default class MainGameScene extends Phaser.Scene {
         //Interaction 1 this.interacted
         if (this.interacted === false) {
             var self = this;
-            this.tablesLayer.setTileLocationCallback(24, 18, 1, 1, function () {
-                if (self.player.direction == "right" && self.keyE.isDown && self.interacted === false) {
+            this.decoLayer.setTileLocationCallback(11, 10, 1, 1, function () {
+                if (self.player.direction == "up" && self.keyE.isDown && self.interacted === false) {
                     console.log("Interacted!");
                     self.interacted = true;
                     self.player.vel = 0;
