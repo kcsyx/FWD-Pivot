@@ -17,32 +17,21 @@ export default class MainGameScene extends Phaser.Scene {
         this.load.image("schoolClassrooms", "assets/tiled/School - Classrooms.png");
         this.load.image("schoolFloor", "assets/tiled/School - Floor.png");
         this.load.tilemapTiledJSON("level1", "assets/tiled/level1.json");
-        //download min file instead https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/plugins/dist/rexuiplugin.min.js change url to local file
-        // this.load.scenePlugin({
-        //     key: 'rexuiplugin',
-        //     url: '../Plugins/rexuiplugin.min.js',
-        //     sceneKey: 'rexUI'
-        // });
-        this.load.scenePlugin({
-            key: 'rexuiplugin',
-            url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
-            sceneKey: 'rexUI'
-        });
     }
 
     create() {
-        this.cameras.main.fadeIn(1000);
+        this.cameras.main.fadeIn(500);
         // Add player to current scene
         if (this.gender == "male") {
-            this.player = new MalePlayer(this, 300, 300);
+            this.player = new MalePlayer(this, 210, 200);
         } else if (this.gender == "female") {
-            this.player = new FemalePlayer(this, 300, 300);
+            this.player = new FemalePlayer(this, 210, 200);
         }
         this.cameras.main.startFollow(this.player);
 
         //map
         this.level1 = this.add.tilemap("level1");
-        this.physics.world.setBounds(0,0,this.level1.widthInPixels,this.level1.heightInPixels);
+        this.physics.world.setBounds(0, 0, this.level1.widthInPixels, this.level1.heightInPixels);
         this.schoolClassrooms = this.level1.addTilesetImage("deco", "schoolClassrooms", 32, 32);
         this.schoolFloor = this.level1.addTilesetImage("floor", "schoolFloor", 32, 32);
         this.floorLayer = this.level1.createStaticLayer("floor", this.schoolFloor, 0, 0).setDepth(-3);
@@ -61,9 +50,10 @@ export default class MainGameScene extends Phaser.Scene {
         // KEY INTERACTION
         this.interacted = false;
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        //Initialize moneybags
+        //Initialize moneybags and amount insured
         this.moneyBags = 5000;
-        this.scoreBoard = this.add.text(600, 40, "Cash: "+this.moneyBags, {fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff'}).setScrollFactor(0);
+        this.scoreBoard = this.add.text(600, 40, "Cash: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
+        this.amountInsuredCS = 0;
     }
     update() {
         //Interaction 1 this.interacted
@@ -135,15 +125,22 @@ export default class MainGameScene extends Phaser.Scene {
                         .on('button.click', function (button, groupName, index) {
                             console.log(index, button.text);
                             dialog.destroy();
-                            if(index == 0) {
+                            if (index == 0) {
                                 self.moneyBags = self.moneyBags;
-                            } else if(index == 1){
+                                self.amountInsuredCS = 0;
+                            } else if (index == 1) {
                                 self.moneyBags -= 1000;
-                            } else if(index == 2){
+                                self.amountInsuredCS = 1000;
+                            } else if (index == 2) {
                                 self.moneyBags -= 2000;
+                                self.amountInsuredCS = 2000;
                             }
-                            self.scoreBoard.setText('Cash: '+self.moneyBags);
+                            self.scoreBoard.setText('Cash: ' + self.moneyBags);
                             self.player.vel = 200;
+                            self.cameras.main.fadeOut(1000);
+                            self.cameras.main.on('camerafadeoutcomplete', function () {
+                                self.scene.start('level1Random', { gender: self.gender, moneyBags: self.moneyBags, amountInsuredCS: self.amountInsuredCS });
+                            });
                         }, this)
                         .on('button.over', function (button, groupName, index) {
                             button.getElement('background').setStrokeStyle(1, 0xffffff);
@@ -154,8 +151,6 @@ export default class MainGameScene extends Phaser.Scene {
                 };
             });
         }
-        //Interaction 2 this.interacted2?
-        //If interacted and interacted2 == true then next scene fade in ('nextScene', {gender:this.gender, moneyBags:this.moneybags, amountInsuredCS: this.amountCS, amountInsuredEP: this.amountEP})
     }
 
 };

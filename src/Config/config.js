@@ -1,5 +1,5 @@
 import 'phaser';
-
+import rexuiplugin from '../Plugins/rexuiplugin.min.js';
 export default {
   type: Phaser.AUTO,
   parent: 'phaser-example',
@@ -13,5 +13,14 @@ export default {
       
       gravity: { y: 0 }
     }
-  }
+  },    
+  plugins: {
+    scene: [{
+        key: 'rexUI',
+        plugin: rexuiplugin,
+        mapping: 'rexUI'
+    },
+    // ...
+    ]
+}
 };
