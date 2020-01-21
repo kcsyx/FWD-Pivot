@@ -8,7 +8,8 @@ import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import Model from './Model';
 import InstructionsScene from './Scenes/InstructionsScene';
-import MainGameScene from './Scenes/MainGameScene';
+import Level1 from './Scenes/Level1';
+import Level1Random from './Scenes/Level1Random';
 
 class Game extends Phaser.Game {
   constructor () {
@@ -22,7 +23,8 @@ class Game extends Phaser.Game {
     this.scene.add('Credits', CreditsScene);
     this.scene.add('Game', GameScene);
     this.scene.add('Instructions', InstructionsScene);
-    this.scene.add('MainGame', MainGameScene);
+    this.scene.add('Level1', Level1);
+    this.scene.add('Level1Random', Level1Random);
     this.scene.start('Boot');
   }
 }
