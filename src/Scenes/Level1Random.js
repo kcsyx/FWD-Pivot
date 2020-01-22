@@ -53,13 +53,45 @@ export default class Level1Random extends Phaser.Scene {
         //end map
 
         //Initialize moneybags and amount insured
-        var arr = ["nH", "minorA", "majorA"]
-        var itemCS = Phaser.Math.RND.pick(arr);
-        console.log(itemCS);
+        this.arr = ["nH", "minorA", "majorA"]
+        this.itemCS = Phaser.Math.RND.pick(this.arr);
+        console.log(this.itemCS);
+        this.popUp = false;
         this.scoreBoard = this.add.text(600, 40, "Cash: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
     }
     update() {
         //random loop
+        if (this.popUp == false) {
+            var self = this;
+            self.roadFloor.setTileLocationCallback(x, y, width, height, function () {
+                self.popUp = true;
+                if (self.amountInsuredCS == 0) {
+                    if (self.itemCS == "nH") {
+                        //
+                    } else if (self.itemCS == "minorA") {
+                        //
+                    } else if (self.itemCS == "majorA") {
+                        //
+                    }
+                } else if (self.amountInsuredCS == 1000) {
+                    if (self.itemCS == "nH") {
+                        //
+                    } else if (self.itemCS == "minorA") {
+                        //
+                    } else if (self.itemCS == "majorA") {
+                        //
+                    }
+                } else if (self.amountInsuredCS == 2000) {
+                    if (self.itemCS == "nH") {
+                        //
+                    } else if (self.itemCS == "minorA") {
+                        //
+                    } else if (self.itemCS == "majorA") {
+                        //
+                    }
+                }
+            });
+        }
     }
 
 };

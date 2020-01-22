@@ -65,6 +65,7 @@ export default class Level1 extends Phaser.Scene {
                     console.log("Interacted!");
                     self.interacted = true;
                     self.player.vel = 0;
+                    self.csMarker.destroy();
                     //DIALOG
                     var createLabel = function (scene, text, backgroundColor) {
                         return scene.rexUI.add.label({
@@ -138,7 +139,6 @@ export default class Level1 extends Phaser.Scene {
                             }
                             self.scoreBoard.setText('Cash: ' + self.moneyBags);
                             self.player.vel = 200;
-                            self.csMarker.destroy();
                             self.cameras.main.fadeOut(1000);
                             self.cameras.main.on('camerafadeoutcomplete', function () {
                                 self.scene.start('Level1Random', { gender: self.gender, moneyBags: self.moneyBags, amountInsuredCS: self.amountInsuredCS });
