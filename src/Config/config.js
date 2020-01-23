@@ -1,5 +1,6 @@
 import 'phaser';
 import rexuiplugin from '../Plugins/rexuiplugin.min.js';
+
 export default {
   type: Phaser.AUTO,
   parent: 'phaser-example',

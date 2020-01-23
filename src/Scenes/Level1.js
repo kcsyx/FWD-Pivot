@@ -103,8 +103,8 @@ export default class Level1 extends Phaser.Scene {
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
-                            createLabel(self, 'Insure $1000'),
-                            createLabel(self, 'Insure $2000')
+                            createLabel(self, 'Insure $1250'),
+                            createLabel(self, 'Insure $2500')
                         ],
                         space: {
                             title: 25,
@@ -130,12 +130,33 @@ export default class Level1 extends Phaser.Scene {
                             if (index == 0) {
                                 self.moneyBags = self.moneyBags;
                                 self.amountInsuredCS = 0;
+                                self.moneyChange = self.add.text(600, 60, "- 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                                self.tweens.add({
+                                    targets: self.moneyChange,
+                                    alpha: { from: 1, to: 0 },
+                                    duration: 4000,
+                                    ease: 'Power2'
+                                });
                             } else if (index == 1) {
-                                self.moneyBags -= 1000;
-                                self.amountInsuredCS = 1000;
+                                self.moneyBags -= 1250;
+                                self.amountInsuredCS = 1250;
+                                self.moneyChange = self.add.text(600, 60, "- 1250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                                self.tweens.add({
+                                    targets: self.moneyChange,
+                                    alpha: { from: 1, to: 0 },
+                                    duration: 4000,
+                                    ease: 'Power2'
+                                });
                             } else if (index == 2) {
-                                self.moneyBags -= 2000;
-                                self.amountInsuredCS = 2000;
+                                self.moneyBags -= 2500;
+                                self.amountInsuredCS = 2500;
+                                self.moneyChange = self.add.text(600, 60, "- 2500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                                self.tweens.add({
+                                    targets: self.moneyChange,
+                                    alpha: { from: 1, to: 0 },
+                                    duration: 4000,
+                                    ease: 'Power2'
+                                });
                             }
                             self.scoreBoard.setText('Cash: ' + self.moneyBags);
                             self.player.vel = 200;

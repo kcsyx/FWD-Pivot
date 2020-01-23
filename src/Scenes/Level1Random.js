@@ -60,36 +60,117 @@ export default class Level1Random extends Phaser.Scene {
         this.scoreBoard = this.add.text(600, 40, "Cash: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
     }
     update() {
-        //random loop
-        if (this.popUp == false) {
+        if (this.popUp === false) {
             var self = this;
-            self.roadFloor.setTileLocationCallback(x, y, width, height, function () {
-                self.popUp = true;
-                if (self.amountInsuredCS == 0) {
+            this.grassFloor.setTileLocationCallback(13, 4, 5, 1, function () {
+                if (self.amountInsuredCS == 0 && self.popUp === false) {
+                    self.popUp = true;
+                    self.player.vel = 0;
+                    self.cameras.main.shake(200);
                     if (self.itemCS == "nH") {
-                        //
+                        self.moneyBags = self.moneyBags;
+                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
+                        // show money lossprofit and fade 2s
+                        // dialog pop up, close on click and set player vel back to 200
                     } else if (self.itemCS == "minorA") {
+                        self.moneyBags -= 1250;
+                        self.moneyChange = self.add.text(600, 60, "- 1250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     } else if (self.itemCS == "majorA") {
+                        self.moneyBags -= 2500;
+                        self.moneyChange = self.add.text(600, 60, "- 2500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     }
-                } else if (self.amountInsuredCS == 1000) {
+                } else if (self.amountInsuredCS == 1250 && self.popUp === false) {
+                    self.popUp = true;
+                    self.player.vel = 0;
+                    self.cameras.main.shake(200);
                     if (self.itemCS == "nH") {
+                        self.moneyBags = self.moneyBags;
+                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     } else if (self.itemCS == "minorA") {
+                        self.moneyBags += 1825;
+                        self.moneyChange = self.add.text(600, 60, "+ 1825", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     } else if (self.itemCS == "majorA") {
+                        self.moneyBags -= 250;
+                        self.moneyChange = self.add.text(600, 60, "- 250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     }
-                } else if (self.amountInsuredCS == 2000) {
+                } else if (self.amountInsuredCS == 2500 && self.popUp === false) {
+                    self.popUp = true;
+                    self.player.vel = 0;
+                    self.cameras.main.shake(200);
                     if (self.itemCS == "nH") {
+                        self.moneyBags = self.moneyBags;
+                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     } else if (self.itemCS == "minorA") {
+                        self.moneyBags += 1500;
+                        self.moneyChange = self.add.text(600, 60, "+ 1500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     } else if (self.itemCS == "majorA") {
+                        self.moneyBags += 3750;
+                        self.moneyChange = self.add.text(600, 60, "+ 3750", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+                        self.tweens.add({
+                            targets: self.moneyChange,
+                            alpha: { from: 1, to: 0 },
+                            duration: 4000,
+                            ease: 'Power2'
+                        });
                         //
                     }
                 }
+                self.scoreBoard.setText('Cash: ' + self.moneyBags);
             });
         }
     }
