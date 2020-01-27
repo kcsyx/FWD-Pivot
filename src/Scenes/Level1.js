@@ -13,7 +13,6 @@ export default class Level1 extends Phaser.Scene {
     }
 
     preload() {
-        console.log(this.gender);
         this.load.image("schoolClassrooms", "assets/tiled/School - Classrooms.png");
         this.load.image("schoolFloor", "assets/tiled/School - Floor.png");
         this.load.tilemapTiledJSON("level1", "assets/tiled/level1.json");
@@ -53,7 +52,7 @@ export default class Level1 extends Phaser.Scene {
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         //Initialize moneybags and amount insured
         this.moneyBags = 5000;
-        this.scoreBoard = this.add.text(600, 40, "Cash: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
+        this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
         this.amountInsuredCS = 0;
     }
     update() {
@@ -62,7 +61,6 @@ export default class Level1 extends Phaser.Scene {
             var self = this;
             this.decoLayer.setTileLocationCallback(11, 10, 1, 1, function () {
                 if (self.player.direction == "up" && self.keyE.isDown && self.interacted === false) {
-                    console.log("Interacted!");
                     self.interacted = true;
                     self.player.vel = 0;
                     self.csMarker.destroy();
@@ -125,7 +123,6 @@ export default class Level1 extends Phaser.Scene {
 
                     dialog
                         .on('button.click', function (button, groupName, index) {
-                            console.log(index, button.text);
                             dialog.destroy();
                             if (index == 0) {
                                 self.moneyBags = self.moneyBags;
@@ -158,7 +155,7 @@ export default class Level1 extends Phaser.Scene {
                                     ease: 'Power2'
                                 });
                             }
-                            self.scoreBoard.setText('Cash: ' + self.moneyBags);
+                            self.scoreBoard.setText('FWD$: ' + self.moneyBags);
                             self.player.vel = 200;
                             self.cameras.main.fadeOut(1000);
                             self.cameras.main.on('camerafadeoutcomplete', function () {
@@ -174,6 +171,7 @@ export default class Level1 extends Phaser.Scene {
                 };
             });
         }
+        //TODO Interaction 2 ENDOWMENT PLAN
     }
 
 };
