@@ -57,6 +57,7 @@ export default class Level1Random extends Phaser.Scene {
         this.itemCS = Phaser.Math.RND.pick(this.arr);
         // console.log(this.itemCS);
         this.popUp = false;
+        this.endMap = false;
         this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
     }
     update() {
@@ -753,9 +754,12 @@ export default class Level1Random extends Phaser.Scene {
             });
             this.grassFloor.setTileLocationCallback(16, 18, 5, 1, function () {
                 self.cameras.main.fadeOut(1000);
+                if(self.endMap===false){
+                self.endMap = true;
                 self.cameras.main.on('camerafadeoutcomplete', function () {
                     self.scene.start('Level2', { gender: self.gender, moneyBags: self.moneyBags });
                 });
+                }
             });
         };
     }
