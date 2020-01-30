@@ -88,7 +88,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('femaleAvatar', 'assets/female.png');
     this.load.image('instructions', 'assets/instructions.png');
     this.load.image('marker', "assets/questmarker.png");
-    this.load.spritesheet('maleplayer', 'assets/samplesprite.png', { frameWidth: 16, frameHeight: 18 });
+    this.load.spritesheet('maleplayer', 'assets/samplesprite.png', { frameWidth: 34, frameHeight: 34 });
     this.load.spritesheet('femaleplayer', 'assets/femalesamplesprite.png', { frameWidth: 32, frameHeight: 32 });
   }
 
@@ -96,28 +96,28 @@ export default class PreloaderScene extends Phaser.Scene {
     // Male player animations
     this.anims.create({
       key: 'malestand-left',
-      frames: this.anims.generateFrameNumbers('maleplayer', { start: 6, end: 6 }),
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 8, end: 8 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
       key: 'malestand-right',
-      frames: this.anims.generateFrameNumbers('maleplayer', { start: 9, end: 9 }),
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 11, end: 11 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
       key: 'malestand-up',
-      frames: this.anims.generateFrameNumbers('maleplayer', { start: 3, end: 3 }),
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 2, end: 2 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
       key: 'malestand-down',
-      frames: this.anims.generateFrameNumbers('maleplayer', { start: 0, end: 0 }),
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 5, end: 5 }),
       frameRate: 13,
       repeat: -1
     });
@@ -138,14 +138,14 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.anims.create({
       key: 'malewalk-up',
-      frames: this.anims.generateFrameNumbers('maleplayer', { start: 3, end: 5 }),
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 0, end: 2 }),
       frameRate: 13,
       repeat: -1
     });
 
     this.anims.create({
       key: 'malewalk-down',
-      frames: this.anims.generateFrameNumbers('maleplayer', { start: 0, end: 2 }),
+      frames: this.anims.generateFrameNumbers('maleplayer', { start: 3, end: 5 }),
       frameRate: 13,
       repeat: -1
     });
