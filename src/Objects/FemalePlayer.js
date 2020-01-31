@@ -8,7 +8,7 @@ export default class FemalePlayer extends Phaser.GameObjects.Sprite {
 
     scene.physics.world.enable(this);
     scene.add.existing(this);
-
+    this.setScale(0.94117647058);
     this.setPosition(x, y);
     this.body.setCollideWorldBounds(true);
 
