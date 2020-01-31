@@ -11,6 +11,7 @@ export default class Level2 extends Phaser.Scene {
     init(data) {
         this.gender = data.gender;
         this.moneyBags = data.moneyBags;
+        this.clockTime = data.clockTime;
     }
 
     preload() {
@@ -68,9 +69,32 @@ export default class Level2 extends Phaser.Scene {
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         //Initialize moneybags and amount insured
         this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
+        this.clock = this.plugins.get('rexClock').add(this);
+        this.clock.start(this.clockTime);
+        this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
         // this.amountInsuredH = 0;
     }
     update() {
+        function msConversion(millis) {
+            let sec = Math.floor(millis / 1000);
+            let hrs = Math.floor(sec / 3600);
+            sec -= hrs * 3600;
+            let min = Math.floor(sec / 60);
+            sec -= min * 60;
+
+            sec = '' + sec;
+            sec = ('00' + sec).substring(sec.length);
+
+            if (hrs > 0) {
+                min = '' + min;
+                min = ('00' + min).substring(min.length);
+                return hrs + ":" + min + ":" + sec;
+            }
+            else {
+                return min + ":" + sec;
+            }
+        }
+        this.clockTimer.setText(msConversion(this.clock.now));
         //callback loop
     }
 
