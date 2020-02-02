@@ -17,6 +17,7 @@ export default class Level1 extends Phaser.Scene {
         this.load.image("schoolFloor", "assets/tiled/School - Floor.png");
         this.load.tilemapTiledJSON("level1", "assets/tiled/level1.json");
         this.csMarker = this.add.tileSprite(360, 215, 0, 0, "marker").setScale(0.1).setDepth(1);
+        this.csMarker2 = this.add.tileSprite(135, 90, 0, 0, "marker").setScale(0.1).setDepth(1);
     }
 
     create() {
@@ -49,6 +50,7 @@ export default class Level1 extends Phaser.Scene {
 
         // KEY INTERACTION
         this.interacted = false;
+        this.interacted2 = false;
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         //Initialize moneybags and amount insured
         this.clock = this.plugins.get('rexClock').add(this);
@@ -57,6 +59,7 @@ export default class Level1 extends Phaser.Scene {
         this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
         this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
         this.amountInsuredCS = 0;
+        this.amountInsuredEP = 0;
     }
     update() {
         function msConversion(millis) {
@@ -180,10 +183,12 @@ export default class Level1 extends Phaser.Scene {
                             }
                             self.scoreBoard.setText('FWD$: ' + self.moneyBags);
                             self.player.vel = 200;
-                            self.cameras.main.fadeOut(1000);
-                            self.cameras.main.on('camerafadeoutcomplete', function () {
-                                self.scene.start('Level1Random', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now, amountInsuredCS: self.amountInsuredCS });
-                            });
+                            if (self.interacted == true && self.interacted2 == true) {
+                                self.cameras.main.fadeOut(1000);
+                                self.cameras.main.on('camerafadeoutcomplete', function () {
+                                    self.scene.start('Level1Random', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now, amountInsuredCS: self.amountInsuredCS, amountInsuredEP: self.amountInsuredEP });
+                                });
+                            };
                         }, this)
                         .on('button.over', function (button, groupName, index) {
                             button.getElement('background').setStrokeStyle(1, 0xffffff);
@@ -194,7 +199,121 @@ export default class Level1 extends Phaser.Scene {
                 };
             });
         }
-        //TODO Interaction 2 ENDOWMENT PLAN
-    }
+        if (this.interacted2 === false) {
+            var self = this;
+            this.decoLayer.setTileLocationCallback(4, 3, 1, 1, function () {
+                if (self.player.direction == "down" && self.keyE.isDown && self.interacted2 === false) {
+                    self.interacted2 = true;
+                    self.player.vel = 0;
+                    self.csMarker2.destroy();
+                    //DIALOG
+                    var createLabel = function (scene, text, backgroundColor) {
+                        return scene.rexUI.add.label({
+                            background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
+                            text: scene.add.text(0, 0, text, {
+                                fontSize: '24px'
+                            }),
+                            space: {
+                                left: 10,
+                                right: 10,
+                                top: 10,
+                                bottom: 10
+                            }
+                        });
+                    };
 
+                    var dialog = self.rexUI.add.dialog({
+                        x: 400,
+                        y: 300,
+                        background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
+                        title: self.rexUI.add.label({
+                            background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
+                            text: self.add.text(0, 0, 'Endowment Insurance', {
+                                fontSize: '24px'
+                            }),
+                            space: {
+                                left: 15,
+                                right: 15,
+                                top: 10,
+                                bottom: 10
+                            }
+                        }),
+                        content: self.add.text(0, 0, 'DESCRIPTION ', {
+                            fontSize: '24px'
+                        }),
+                        choices: [
+                            createLabel(self, 'Do not insure'),
+                            createLabel(self, 'Insure $1250'),
+                            createLabel(self, 'Insure $2500')
+                        ],
+                        space: {
+                            title: 25,
+                            content: 25,
+                            choice: 15,
+                            left: 25,
+                            right: 25,
+                            top: 25,
+                            bottom: 25,
+                        },
+                        expand: {
+                            content: false,  // Content is a pure text object
+                        }
+                    })
+                        .layout()
+                        .setScrollFactor(0)
+                        .popUp(1000);
+
+                    dialog
+                        .on('button.click', function (button, groupName, index) {
+                            dialog.destroy();
+                            if (index == 0) {
+                                self.moneyBags = self.moneyBags;
+                                self.amountInsuredEP = 0;
+                                self.moneyChange = self.add.text(600, 60, "- 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                                self.tweens.add({
+                                    targets: self.moneyChange,
+                                    alpha: { from: 1, to: 0 },
+                                    duration: 4000,
+                                    ease: 'Power2'
+                                });
+                            } else if (index == 1) {
+                                self.moneyBags -= 1250;
+                                self.amountInsuredEP = 1250;
+                                self.moneyChange = self.add.text(600, 60, "- 1250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                                self.tweens.add({
+                                    targets: self.moneyChange,
+                                    alpha: { from: 1, to: 0 },
+                                    duration: 4000,
+                                    ease: 'Power2'
+                                });
+                            } else if (index == 2) {
+                                self.moneyBags -= 2500;
+                                self.amountInsuredEP = 2500;
+                                self.moneyChange = self.add.text(600, 60, "- 2500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                                self.tweens.add({
+                                    targets: self.moneyChange,
+                                    alpha: { from: 1, to: 0 },
+                                    duration: 4000,
+                                    ease: 'Power2'
+                                });
+                            }
+                            self.scoreBoard.setText('FWD$: ' + self.moneyBags);
+                            self.player.vel = 200;
+                            if (self.interacted == true && self.interacted2 == true) {
+                                self.cameras.main.fadeOut(1000);
+                                self.cameras.main.on('camerafadeoutcomplete', function () {
+                                    self.scene.start('Level1Random', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now, amountInsuredCS: self.amountInsuredCS, amountInsuredEP: self.amountInsuredEP });
+                                });
+                            };
+                        }, this)
+                        .on('button.over', function (button, groupName, index) {
+                            button.getElement('background').setStrokeStyle(1, 0xffffff);
+                        })
+                        .on('button.out', function (button, groupName, index) {
+                            button.getElement('background').setStrokeStyle();
+                        });
+                };
+            });
+        }
+    }
 };
