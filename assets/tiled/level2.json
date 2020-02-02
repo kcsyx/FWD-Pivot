@@ -1,4 +1,12 @@
-{ "height":20,
+{ "compressionlevel":0,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
+ "height":20,
  "infinite":false,
  "layers":[
         {
@@ -113,7 +121,7 @@
  "nextobjectid":1,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.5",
+ "tiledversion":"2019.12.11",
  "tileheight":32,
  "tilesets":[
         {
@@ -129,12 +137,39 @@
          "tileheight":32,
          "tiles":[
                 {
+                 "id":85,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":109,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":133,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
                  "id":192,
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -143,7 +178,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -152,7 +187,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -161,7 +196,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -170,7 +205,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -179,7 +214,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
