@@ -56,8 +56,8 @@ export default class Level1Random extends Phaser.Scene {
 
         //Initialize moneybags and amount insured
         this.arr = ["nH", "minorA", "majorA"]
-        this.itemCS = Phaser.Math.RND.pick(this.arr);
-        this.itemEP = Phaser.Math.RND.pick(this.arr);
+        this.item1 = Phaser.Math.RND.pick(this.arr);
+        this.item2 = Phaser.Math.RND.pick(this.arr);
         this.popUp = false;
         this.popUp2 = false;
         this.endMap = false;
@@ -163,7 +163,7 @@ export default class Level1Random extends Phaser.Scene {
                 if (self.amountInsuredCS == 0 && self.popUp === false) {
                     self.popUp = true;
                     self.player.vel = 0;
-                    if (self.itemCS == "nH") {
+                    if (self.item1 == "nH") {
                         self.moneyBags = self.moneyBags;
                         self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
                         self.tweens.add({
@@ -238,7 +238,7 @@ export default class Level1Random extends Phaser.Scene {
                                 button.getElement('background').setStrokeStyle();
                             });
 
-                    } else if (self.itemCS == "minorA") {
+                    } else if (self.item1 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 1250;
                         self.moneyChange = self.add.text(600, 60, "- 1250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
@@ -313,7 +313,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemCS == "majorA") {
+                    } else if (self.item1 == "majorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 2500;
                         self.moneyChange = self.add.text(600, 60, "- 2500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
@@ -392,7 +392,7 @@ export default class Level1Random extends Phaser.Scene {
                 } else if (self.amountInsuredCS == 1250 && self.popUp === false) {
                     self.popUp = true;
                     self.player.vel = 0;
-                    if (self.itemCS == "nH") {
+                    if (self.item1 == "nH") {
                         self.moneyBags = self.moneyBags;
                         self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
                         self.tweens.add({
@@ -466,7 +466,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemCS == "minorA") {
+                    } else if (self.item1 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1825;
                         self.moneyChange = self.add.text(600, 60, "+ 1825", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
@@ -541,7 +541,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemCS == "majorA") {
+                    } else if (self.item1 == "majorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 250;
                         self.moneyChange = self.add.text(600, 60, "- 250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
@@ -620,7 +620,7 @@ export default class Level1Random extends Phaser.Scene {
                 } else if (self.amountInsuredCS == 2500 && self.popUp === false) {
                     self.popUp = true;
                     self.player.vel = 0;
-                    if (self.itemCS == "nH") {
+                    if (self.item1 == "nH") {
                         self.moneyBags = self.moneyBags;
                         self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
                         self.tweens.add({
@@ -694,7 +694,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemCS == "minorA") {
+                    } else if (self.item1 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1500;
                         self.moneyChange = self.add.text(600, 60, "+ 1500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
@@ -769,7 +769,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemCS == "majorA") {
+                    } else if (self.item1 == "majorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 3750;
                         self.moneyChange = self.add.text(600, 60, "+ 3750", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
@@ -864,7 +864,7 @@ export default class Level1Random extends Phaser.Scene {
                 if (self.amountInsuredEP == 0 && self.popUp2 === false) {
                     self.popUp2 = true;
                     self.player.vel = 0;
-                    if (self.itemEP == "nH") {
+                    if (self.item2 == "nH") {
                         self.moneyBags = self.moneyBags;
                         self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
                         self.tweens.add({
@@ -939,7 +939,7 @@ export default class Level1Random extends Phaser.Scene {
                                 button.getElement('background').setStrokeStyle();
                             });
 
-                    } else if (self.itemEP == "minorA") {
+                    } else if (self.item2 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 1250;
                         self.moneyChange = self.add.text(600, 60, "- 1250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
@@ -1014,7 +1014,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemEP == "majorA") {
+                    } else if (self.item2 == "majorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 2500;
                         self.moneyChange = self.add.text(600, 60, "- 2500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
@@ -1093,7 +1093,7 @@ export default class Level1Random extends Phaser.Scene {
                 } else if (self.amountInsuredEP == 1250 && self.popUp2 === false) {
                     self.popUp2 = true;
                     self.player.vel = 0;
-                    if (self.itemEP == "nH") {
+                    if (self.item2 == "nH") {
                         self.moneyBags = self.moneyBags;
                         self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
                         self.tweens.add({
@@ -1167,7 +1167,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemEP == "minorA") {
+                    } else if (self.item2 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1825;
                         self.moneyChange = self.add.text(600, 60, "+ 1825", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
@@ -1242,7 +1242,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemEP == "majorA") {
+                    } else if (self.item2 == "majorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 250;
                         self.moneyChange = self.add.text(600, 60, "- 250", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
@@ -1321,7 +1321,7 @@ export default class Level1Random extends Phaser.Scene {
                 } else if (self.amountInsuredEP == 2500 && self.popUp2 === false) {
                     self.popUp2 = true;
                     self.player.vel = 0;
-                    if (self.itemEP == "nH") {
+                    if (self.item2 == "nH") {
                         self.moneyBags = self.moneyBags;
                         self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
                         self.tweens.add({
@@ -1395,7 +1395,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemEP == "minorA") {
+                    } else if (self.item2 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1500;
                         self.moneyChange = self.add.text(600, 60, "+ 1500", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
@@ -1470,7 +1470,7 @@ export default class Level1Random extends Phaser.Scene {
                             .on('button.out', function (button, groupName, index) {
                                 button.getElement('background').setStrokeStyle();
                             });
-                    } else if (self.itemEP == "majorA") {
+                    } else if (self.item2 == "majorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 3750;
                         self.moneyChange = self.add.text(600, 60, "+ 3750", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);

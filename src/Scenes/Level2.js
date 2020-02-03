@@ -103,7 +103,7 @@ export default class Level2 extends Phaser.Scene {
         this.clockTimer.setText(msConversion(this.clock.now));
         if (this.interacted === false) {
             var self = this;
-            this.stuffLayer.setTileLocationCallback(7, 10, 2, 2, function () {
+            this.stuffLayer.setTileLocationCallback(6, 9, 3, 2, function () {
                 if (self.keyE.isDown && self.interacted === false) {
                     self.interacted = true;
                     self.player.vel = 0;
@@ -219,7 +219,7 @@ export default class Level2 extends Phaser.Scene {
         }
         if (this.interacted2 === false) {
             var self = this;
-            this.stuffLayer.setTileLocationCallback(15, 5, 2, 1, function () {
+            this.stuffLayer.setTileLocationCallback(15, 5, 1, 2, function () {
                 if (self.player.direction == "right" && self.keyE.isDown && self.interacted2 === false) {
                     self.interacted2 = true;
                     self.player.vel = 0;
