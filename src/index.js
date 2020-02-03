@@ -11,6 +11,7 @@ import InstructionsScene from './Scenes/InstructionsScene';
 import Level1 from './Scenes/Level1';
 import Level1Random from './Scenes/Level1Random';
 import Level2 from './Scenes/Level2';
+import Level2Random from './Scenes/Level2Random';
 
 class Game extends Phaser.Game {
   constructor () {
@@ -27,6 +28,7 @@ class Game extends Phaser.Game {
     this.scene.add('Level1', Level1);
     this.scene.add('Level1Random', Level1Random);
     this.scene.add('Level2', Level2);
+    this.scene.add('Level2Random', Level2Random);
     this.scene.start('Boot');
   }
 }
