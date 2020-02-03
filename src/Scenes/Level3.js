@@ -23,16 +23,16 @@ export default class Level3 extends Phaser.Scene {
         this.load.image("doors", "assets/tiled/doors.png");
         this.load.image("motorCycle", "assets/tiled/motorcycle.png");
         this.load.tilemapTiledJSON("level3", "assets/tiled/level3.json");
-        this.csMarker = this.add.tileSprite(243, 501, 0, 0, "marker").setScale(0.1).setDepth(1);
+        this.csMarker = this.add.tileSprite(257, 500, 0, 0, "marker").setScale(0.1).setDepth(1);
     }
 
     create() {
         this.cameras.main.fadeIn(500);
         // Add player to current scene
         if (this.gender == "male") {
-            this.player = new MalePlayer(this, 210, 200);
+            this.player = new MalePlayer(this, 526, 109);
         } else if (this.gender == "female") {
-            this.player = new FemalePlayer(this, 210, 200);
+            this.player = new FemalePlayer(this, 526, 109);
         }
         this.cameras.main.startFollow(this.player);
 
@@ -211,7 +211,7 @@ export default class Level3 extends Phaser.Scene {
                             if (self.interacted == true) {
                                 self.cameras.main.fadeOut(1000);
                                 self.cameras.main.on('camerafadeoutcomplete', function () {
-                                    self.scene.start('Level3Random', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now, amountInsuredMotorCycle: self.amountInsuredMotorCycle});
+                                    self.scene.start('Level3Random', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now, amountInsuredMotorCycle: self.amountInsuredMotorCycle });
                                 });
                             };
                         }, this)

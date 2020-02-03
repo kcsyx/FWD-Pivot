@@ -26,9 +26,9 @@ export default class Level3Random extends Phaser.Scene {
         this.cameras.main.fadeIn(500);
         // Add player to current scene
         if (this.gender == "male") {
-            this.player = new MalePlayer(this, 70, 130);
+            this.player = new MalePlayer(this, 70, 140);
         } else if (this.gender == "female") {
-            this.player = new FemalePlayer(this, 70, 130);
+            this.player = new FemalePlayer(this, 70, 140);
         }
         this.cameras.main.startFollow(this.player);
 
