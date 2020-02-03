@@ -67,6 +67,7 @@ export default class Level2 extends Phaser.Scene {
         // KEY INTERACTION
         this.interacted = false;
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.endGame = false;
         //Initialize moneybags and amount insured
         this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
         this.clock = this.plugins.get('rexClock').add(this);
@@ -75,6 +76,75 @@ export default class Level2 extends Phaser.Scene {
         // this.amountInsuredH = 0;
     }
     update() {
+        if (this.moneyBags < 0 && this.endGame == false) {
+            this.endGame = true;
+            var self = this;
+            this.player.vel = 0;
+            var createLabel = function (scene, text, backgroundColor) {
+                return scene.rexUI.add.label({
+                    background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
+                    text: scene.add.text(0, 0, text, {
+                        fontSize: '24px'
+                    }),
+                    space: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                });
+            };
+
+            var dialog = self.rexUI.add.dialog({
+                x: 400,
+                y: 300,
+                background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
+                title: self.rexUI.add.label({
+                    background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
+                    text: self.add.text(0, 0, 'GAME OVER!', {
+                        fontSize: '24px'
+                    }),
+                    space: {
+                        left: 15,
+                        right: 15,
+                        top: 10,
+                        bottom: 10
+                    }
+                }),
+                content: self.add.text(0, 0, 'You are in debt', {
+                    fontSize: '24px'
+                }),
+                choices: [
+                    createLabel(self, 'RETRY')
+                ],
+                space: {
+                    title: 25,
+                    content: 25,
+                    choice: 15,
+                    left: 25,
+                    right: 25,
+                    top: 25,
+                    bottom: 25,
+                },
+                expand: {
+                    content: false,  // Content is a pure text object
+                }
+            })
+                .layout()
+                .setScrollFactor(0)
+                .popUp(1000);
+            dialog
+                .on('button.click', function (button, groupName, index) {
+                    dialog.destroy();
+                    location.reload();
+                }, this)
+                .on('button.over', function (button, groupName, index) {
+                    button.getElement('background').setStrokeStyle(1, 0xffffff);
+                })
+                .on('button.out', function (button, groupName, index) {
+                    button.getElement('background').setStrokeStyle();
+                });
+        }
         function msConversion(millis) {
             let sec = Math.floor(millis / 1000);
             let hrs = Math.floor(sec / 3600);
