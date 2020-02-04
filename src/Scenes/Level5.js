@@ -133,8 +133,9 @@ export default class Level5 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, 'BAD things happen even to GOOD pets, and medical EXPENSES can rack up.\n\nGet PET INSURANCE because a HAPPY pet makes for a HAPPY owner!', {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
@@ -154,6 +155,7 @@ export default class Level5 extends Phaser.Scene {
                             content: false,  // Content is a pure text object
                         }
                     })
+                        .setDepth(2)
                         .layout()
                         .setScrollFactor(0)
                         .popUp(1000);
@@ -249,8 +251,9 @@ export default class Level5 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, 'You NEVER know when a car CRASH could happen.\n\nEnsure you and your family are PROTECTED, get CAR INSURANCE.', {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
@@ -271,6 +274,7 @@ export default class Level5 extends Phaser.Scene {
                         }
                     })
                         .layout()
+                        .setDepth(2)
                         .setScrollFactor(0)
                         .popUp(1000);
 

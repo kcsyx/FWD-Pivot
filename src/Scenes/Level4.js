@@ -128,7 +128,7 @@ export default class Level4 extends Phaser.Scene {
                         background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                         title: self.rexUI.add.label({
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                            text: self.add.text(0, 0, 'Food Insurance', {
+                            text: self.add.text(0, 0, 'Health Insurance', {
                                 fontSize: '24px'
                             }),
                             space: {
@@ -138,8 +138,9 @@ export default class Level4 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, 'Medical Treatment is EXPENSIVE and RISING! Don’t let one accident turn your whole life upside down, get COVERED by HEALTH INSURANCE!', {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
@@ -161,6 +162,7 @@ export default class Level4 extends Phaser.Scene {
                     })
                         .layout()
                         .setScrollFactor(0)
+                        .setDepth(2)
                         .popUp(1000);
 
                     dialog
@@ -254,8 +256,9 @@ export default class Level4 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, 'Flight delays and lost luggage are a huge HEADACHE…\nbut having TRAVEL INSURANCE means a SMOOTH and STRESS-FREE travel experience!\n\nFun Fact: 20% of all flights are delayed by 15 minutes. That’s less than the time it takes to travel from Earth to space!', {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
@@ -276,6 +279,7 @@ export default class Level4 extends Phaser.Scene {
                         }
                     })
                         .layout()
+                        .setDepth(2)
                         .setScrollFactor(0)
                         .popUp(1000);
 

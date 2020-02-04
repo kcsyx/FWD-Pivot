@@ -87,6 +87,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('maleAvatar', 'assets/male.png');
     this.load.image('femaleAvatar', 'assets/female.png');
     this.load.image('instructions', 'assets/instructions.png');
+    this.load.image('instructions2', 'assets/instructions2.png');
     this.load.image('marker', "assets/questmarker.png");
     this.load.spritesheet('maleplayer', 'assets/samplesprite.png', { frameWidth: 34, frameHeight: 34 });
     this.load.spritesheet('femaleplayer', 'assets/femalesamplesprite.png', { frameWidth: 34, frameHeight: 34 });

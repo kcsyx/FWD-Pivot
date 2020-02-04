@@ -1,6 +1,7 @@
 import 'phaser';
 import rexuiplugin from '../Plugins/rexuiplugin.min.js';
 import ClockPlugin from '../Plugins/clock-plugin.js';
+import TextTypingPlugin from '../Plugins/texttyping-plugin.js';
 
 export default {
   type: Phaser.AUTO,
@@ -11,13 +12,17 @@ export default {
     default: 'arcade',
     arcade: {
       //SET TO TRUE to see  hitboxes
-      debug: true,
+      debug: false,
 
       gravity: { y: 0 }
     }
   },
   plugins: {
     global: [{
+      key: 'rexTextTyping',
+      plugin: TextTypingPlugin,
+      start: true
+    }, {
       key: 'rexClock',
       plugin: ClockPlugin,
       start: true

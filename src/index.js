@@ -5,7 +5,6 @@ import BootScene from './Scenes/BootScene';
 import PreloaderScene from './Scenes/PreloaderScene';
 import TitleScene from './Scenes/TitleScene';
 import OptionsScene from './Scenes/OptionsScene';
-import CreditsScene from './Scenes/CreditsScene';
 import Model from './Model';
 import InstructionsScene from './Scenes/InstructionsScene';
 import Level1 from './Scenes/Level1';
@@ -17,6 +16,7 @@ import Level3Random from './Scenes/Level3Random';
 import Level4 from './Scenes/Level4';
 import Level4Random from './Scenes/Level4Random';
 import Level5 from './Scenes/Level5';
+import Level5Random from './Scenes/Level5Random';
 
 class Game extends Phaser.Game {
   constructor () {
@@ -27,7 +27,6 @@ class Game extends Phaser.Game {
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
     this.scene.add('Options', OptionsScene);
-    this.scene.add('Credits', CreditsScene);
     this.scene.add('Game', GameScene);
     this.scene.add('Instructions', InstructionsScene);
     this.scene.add('Level1', Level1);
@@ -39,6 +38,7 @@ class Game extends Phaser.Game {
     this.scene.add('Level4', Level4);
     this.scene.add('Level4Random', Level4Random);
     this.scene.add('Level5', Level5);
+    this.scene.add('Level5Random', Level5Random);
     this.scene.start('Boot');
   }
 }

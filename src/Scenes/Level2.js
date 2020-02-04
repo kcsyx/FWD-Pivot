@@ -140,8 +140,9 @@ export default class Level2 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, 'An accident could CRIPPLE you…\nwith DEBT!\n\nWith PERSONAL ACCIDENT INSURANCE, whatever happens, you’re COVERED.', {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
@@ -256,8 +257,9 @@ export default class Level2 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, "Phones - we can't live without them, and we should NEVER have to.\n\nGet COVERED with PHONE INSURANCE and never worry about losing your phone again!", {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),

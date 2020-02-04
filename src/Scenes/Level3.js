@@ -147,8 +147,9 @@ export default class Level3 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, 'Motorcycles could BREAKDOWN at any time and repairs can be COSTLY.\n\nDon’t let BILLS get in the way of your RIDING, get MOTORCYCLE INSURANCE!\n\nFun Fact: Motorcycles tend to need MORE regular maintenance than cars do.', {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),

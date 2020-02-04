@@ -162,79 +162,7 @@ export default class Level2Random extends Phaser.Scene {
                     self.player.vel = 0;
                     if (self.item1 == "nH") {
                         self.moneyBags = self.moneyBags;
-                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
-                        self.tweens.add({
-                            targets: self.moneyChange,
-                            alpha: { from: 1, to: 0 },
-                            duration: 4000,
-                            ease: 'Power2'
-                        });
-                        // dialog pop up, close on click and set player vel back to 200
-                        var createLabel = function (scene, text, backgroundColor) {
-                            return scene.rexUI.add.label({
-                                background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
-                                text: scene.add.text(0, 0, text, {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 10,
-                                    right: 10,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            });
-                        };
-
-                        var dialog = self.rexUI.add.dialog({
-                            x: 400,
-                            y: 300,
-                            background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
-                            title: self.rexUI.add.label({
-                                background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Phew!', {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 15,
-                                    right: 15,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            }),
-                            content: self.add.text(0, 0, 'Nothing happened', {
-                                fontSize: '24px'
-                            }),
-                            choices: [
-                                createLabel(self, 'Close')
-                            ],
-                            space: {
-                                title: 25,
-                                content: 25,
-                                choice: 15,
-                                left: 25,
-                                right: 25,
-                                top: 25,
-                                bottom: 25,
-                            },
-                            expand: {
-                                content: false,  // Content is a pure text object
-                            }
-                        })
-                            .layout()
-                            .setScrollFactor(0)
-                            .popUp(1000);
-                        dialog
-                            .on('button.click', function (button, groupName, index) {
-                                dialog.destroy();
-                                self.player.vel = 200;
-                            }, this)
-                            .on('button.over', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle(1, 0xffffff);
-                            })
-                            .on('button.out', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle();
-                            });
-
+                        self.player.vel = 200;
                     } else if (self.item1 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 1250;
@@ -267,7 +195,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Minor accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -277,8 +205,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You tripped and twisted your ankle. You require medical attention!\n\nUnfortunately, you did not insure at all and lost a bit of money.', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -342,7 +271,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Major accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -352,8 +281,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident ', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You tripped and broke your leg bone. You require immediate surgery!\n\nUnfortunately, you did not insure at all and lost a lot of money.', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -391,78 +321,7 @@ export default class Level2Random extends Phaser.Scene {
                     self.player.vel = 0;
                     if (self.item1 == "nH") {
                         self.moneyBags = self.moneyBags;
-                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
-                        self.tweens.add({
-                            targets: self.moneyChange,
-                            alpha: { from: 1, to: 0 },
-                            duration: 4000,
-                            ease: 'Power2'
-                        });
-                        // dialog pop up, close on click and set player vel back to 200
-                        var createLabel = function (scene, text, backgroundColor) {
-                            return scene.rexUI.add.label({
-                                background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
-                                text: scene.add.text(0, 0, text, {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 10,
-                                    right: 10,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            });
-                        };
-
-                        var dialog = self.rexUI.add.dialog({
-                            x: 400,
-                            y: 300,
-                            background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
-                            title: self.rexUI.add.label({
-                                background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Phew!', {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 15,
-                                    right: 15,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            }),
-                            content: self.add.text(0, 0, 'Nothing happened', {
-                                fontSize: '24px'
-                            }),
-                            choices: [
-                                createLabel(self, 'Close')
-                            ],
-                            space: {
-                                title: 25,
-                                content: 25,
-                                choice: 15,
-                                left: 25,
-                                right: 25,
-                                top: 25,
-                                bottom: 25,
-                            },
-                            expand: {
-                                content: false,  // Content is a pure text object
-                            }
-                        })
-                            .layout()
-                            .setScrollFactor(0)
-                            .popUp(1000);
-                        dialog
-                            .on('button.click', function (button, groupName, index) {
-                                dialog.destroy();
-                                self.player.vel = 200;
-                            }, this)
-                            .on('button.over', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle(1, 0xffffff);
-                            })
-                            .on('button.out', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle();
-                            });
+                        self.player.vel = 200;
                     } else if (self.item1 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1825;
@@ -495,7 +354,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Minor accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -505,8 +364,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You tripped and twisted your ankle. You require medical attention!\n\nLucky for you, you insured the right amount and got back more money!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -570,7 +430,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Major accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -580,8 +440,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You tripped and broke your leg bone. You require immediate surgery!\n\nUnfortunately, you did not insure enough and lost more money.', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -619,78 +480,7 @@ export default class Level2Random extends Phaser.Scene {
                     self.player.vel = 0;
                     if (self.item1 == "nH") {
                         self.moneyBags = self.moneyBags;
-                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
-                        self.tweens.add({
-                            targets: self.moneyChange,
-                            alpha: { from: 1, to: 0 },
-                            duration: 4000,
-                            ease: 'Power2'
-                        });
-                        // dialog pop up, close on click and set player vel back to 200
-                        var createLabel = function (scene, text, backgroundColor) {
-                            return scene.rexUI.add.label({
-                                background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
-                                text: scene.add.text(0, 0, text, {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 10,
-                                    right: 10,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            });
-                        };
-
-                        var dialog = self.rexUI.add.dialog({
-                            x: 400,
-                            y: 300,
-                            background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
-                            title: self.rexUI.add.label({
-                                background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Phew!', {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 15,
-                                    right: 15,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            }),
-                            content: self.add.text(0, 0, 'Nothing happened', {
-                                fontSize: '24px'
-                            }),
-                            choices: [
-                                createLabel(self, 'Close')
-                            ],
-                            space: {
-                                title: 25,
-                                content: 25,
-                                choice: 15,
-                                left: 25,
-                                right: 25,
-                                top: 25,
-                                bottom: 25,
-                            },
-                            expand: {
-                                content: false,  // Content is a pure text object
-                            }
-                        })
-                            .layout()
-                            .setScrollFactor(0)
-                            .popUp(1000);
-                        dialog
-                            .on('button.click', function (button, groupName, index) {
-                                dialog.destroy();
-                                self.player.vel = 200;
-                            }, this)
-                            .on('button.over', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle(1, 0xffffff);
-                            })
-                            .on('button.out', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle();
-                            });
+                        self.player.vel = 200;
                     } else if (self.item1 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1500;
@@ -723,7 +513,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Minor accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -733,8 +523,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You tripped and twisted your ankle. You require medical attention!\n\nUnfortunately, you insured more than needed but at least you got some of the money back!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -798,7 +589,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Major accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -808,8 +599,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You tripped and broke your leg bone. You require immediate surgery!\n\nLucky for you, you insured heavily and got back more money!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -863,79 +655,7 @@ export default class Level2Random extends Phaser.Scene {
                     self.player.vel = 0;
                     if (self.item2 == "nH") {
                         self.moneyBags = self.moneyBags;
-                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
-                        self.tweens.add({
-                            targets: self.moneyChange,
-                            alpha: { from: 1, to: 0 },
-                            duration: 4000,
-                            ease: 'Power2'
-                        });
-                        // dialog pop up, close on click and set player vel back to 200
-                        var createLabel = function (scene, text, backgroundColor) {
-                            return scene.rexUI.add.label({
-                                background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
-                                text: scene.add.text(0, 0, text, {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 10,
-                                    right: 10,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            });
-                        };
-
-                        var dialog = self.rexUI.add.dialog({
-                            x: 400,
-                            y: 300,
-                            background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
-                            title: self.rexUI.add.label({
-                                background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Phew!', {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 15,
-                                    right: 15,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            }),
-                            content: self.add.text(0, 0, 'Nothing happened', {
-                                fontSize: '24px'
-                            }),
-                            choices: [
-                                createLabel(self, 'Close')
-                            ],
-                            space: {
-                                title: 25,
-                                content: 25,
-                                choice: 15,
-                                left: 25,
-                                right: 25,
-                                top: 25,
-                                bottom: 25,
-                            },
-                            expand: {
-                                content: false,  // Content is a pure text object
-                            }
-                        })
-                            .layout()
-                            .setScrollFactor(0)
-                            .popUp(1000);
-                        dialog
-                            .on('button.click', function (button, groupName, index) {
-                                dialog.destroy();
-                                self.player.vel = 200;
-                            }, this)
-                            .on('button.over', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle(1, 0xffffff);
-                            })
-                            .on('button.out', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle();
-                            });
-
+                        self.player.vel = 200;
                     } else if (self.item2 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags -= 1250;
@@ -968,7 +688,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Minor accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -978,8 +698,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You dropped your phone, breaking the screen!\n\nUnfortunately, you did not insure at all and lost a bit of money.', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1043,7 +764,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Major accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -1053,8 +774,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident ', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You dropped your phone and it has stopped working!\n\nUnfortunately, you did not insure at all and lost a lot of money.', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1092,78 +814,7 @@ export default class Level2Random extends Phaser.Scene {
                     self.player.vel = 0;
                     if (self.item2 == "nH") {
                         self.moneyBags = self.moneyBags;
-                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
-                        self.tweens.add({
-                            targets: self.moneyChange,
-                            alpha: { from: 1, to: 0 },
-                            duration: 4000,
-                            ease: 'Power2'
-                        });
-                        // dialog pop up, close on click and set player vel back to 200
-                        var createLabel = function (scene, text, backgroundColor) {
-                            return scene.rexUI.add.label({
-                                background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
-                                text: scene.add.text(0, 0, text, {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 10,
-                                    right: 10,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            });
-                        };
-
-                        var dialog = self.rexUI.add.dialog({
-                            x: 400,
-                            y: 300,
-                            background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
-                            title: self.rexUI.add.label({
-                                background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Phew!', {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 15,
-                                    right: 15,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            }),
-                            content: self.add.text(0, 0, 'Nothing happened', {
-                                fontSize: '24px'
-                            }),
-                            choices: [
-                                createLabel(self, 'Close')
-                            ],
-                            space: {
-                                title: 25,
-                                content: 25,
-                                choice: 15,
-                                left: 25,
-                                right: 25,
-                                top: 25,
-                                bottom: 25,
-                            },
-                            expand: {
-                                content: false,  // Content is a pure text object
-                            }
-                        })
-                            .layout()
-                            .setScrollFactor(0)
-                            .popUp(1000);
-                        dialog
-                            .on('button.click', function (button, groupName, index) {
-                                dialog.destroy();
-                                self.player.vel = 200;
-                            }, this)
-                            .on('button.over', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle(1, 0xffffff);
-                            })
-                            .on('button.out', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle();
-                            });
+                        self.player.vel = 200;
                     } else if (self.item2 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1825;
@@ -1196,7 +847,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Minor accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -1206,8 +857,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You dropped your phone, breaking the screen!\n\nLucky for you, you insured the right amount and got back more money!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1271,7 +923,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Major accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -1281,8 +933,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You dropped your phone and it has stopped working!\n\nUnfortunately, you did not insure enough and lost more money.', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1320,78 +973,7 @@ export default class Level2Random extends Phaser.Scene {
                     self.player.vel = 0;
                     if (self.item2 == "nH") {
                         self.moneyBags = self.moneyBags;
-                        self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
-                        self.tweens.add({
-                            targets: self.moneyChange,
-                            alpha: { from: 1, to: 0 },
-                            duration: 4000,
-                            ease: 'Power2'
-                        });
-                        // dialog pop up, close on click and set player vel back to 200
-                        var createLabel = function (scene, text, backgroundColor) {
-                            return scene.rexUI.add.label({
-                                background: scene.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x6a4f4b),
-                                text: scene.add.text(0, 0, text, {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 10,
-                                    right: 10,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            });
-                        };
-
-                        var dialog = self.rexUI.add.dialog({
-                            x: 400,
-                            y: 300,
-                            background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
-                            title: self.rexUI.add.label({
-                                background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Phew!', {
-                                    fontSize: '24px'
-                                }),
-                                space: {
-                                    left: 15,
-                                    right: 15,
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            }),
-                            content: self.add.text(0, 0, 'Nothing happened', {
-                                fontSize: '24px'
-                            }),
-                            choices: [
-                                createLabel(self, 'Close')
-                            ],
-                            space: {
-                                title: 25,
-                                content: 25,
-                                choice: 15,
-                                left: 25,
-                                right: 25,
-                                top: 25,
-                                bottom: 25,
-                            },
-                            expand: {
-                                content: false,  // Content is a pure text object
-                            }
-                        })
-                            .layout()
-                            .setScrollFactor(0)
-                            .popUp(1000);
-                        dialog
-                            .on('button.click', function (button, groupName, index) {
-                                dialog.destroy();
-                                self.player.vel = 200;
-                            }, this)
-                            .on('button.over', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle(1, 0xffffff);
-                            })
-                            .on('button.out', function (button, groupName, index) {
-                                button.getElement('background').setStrokeStyle();
-                            });
+                        self.player.vel = 200;
                     } else if (self.item2 == "minorA") {
                         self.cameras.main.shake(200);
                         self.moneyBags += 1500;
@@ -1424,7 +1006,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Minor accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -1434,8 +1016,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You dropped your phone, breaking the screen!\n\nUnfortunately, you insured more than needed but at least you got some of the money back!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1499,7 +1082,7 @@ export default class Level2Random extends Phaser.Scene {
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                             title: self.rexUI.add.label({
                                 background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                                text: self.add.text(0, 0, 'Oh no!', {
+                                text: self.add.text(0, 0, 'Major accident occurred', {
                                     fontSize: '24px'
                                 }),
                                 space: {
@@ -1509,8 +1092,9 @@ export default class Level2Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You dropped your phone and it has stopped working!\n\nLucky for you, you insured heavily and got back more money!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
                             choices: [
                                 createLabel(self, 'Close')

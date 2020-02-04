@@ -29,7 +29,6 @@ export default class Level1 extends Phaser.Scene {
             this.player = new FemalePlayer(this, 210, 200);
         }
         this.cameras.main.startFollow(this.player);
-
         //map
         this.level1 = this.add.tilemap("level1");
         this.physics.world.setBounds(0, 0, this.level1.widthInPixels, this.level1.heightInPixels);
@@ -122,8 +121,9 @@ export default class Level1 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, 'LOSING all your hard work to MALWARE or getting SCAMMED by HACKERS sure is SCARY.\n\nMake sure your data is PROTECTED with CYBERSECURITY INSURANCE.', {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
@@ -228,7 +228,7 @@ export default class Level1 extends Phaser.Scene {
                         background: self.rexUI.add.roundRectangle(0, 0, 100, 100, 20, 0x3e2723),
                         title: self.rexUI.add.label({
                             background: self.rexUI.add.roundRectangle(0, 0, 100, 40, 20, 0x1b0000),
-                            text: self.add.text(0, 0, 'Endowment Insurance', {
+                            text: self.add.text(0, 0, 'Endowment Plan', {
                                 fontSize: '24px'
                             }),
                             space: {
@@ -238,8 +238,9 @@ export default class Level1 extends Phaser.Scene {
                                 bottom: 10
                             }
                         }),
-                        content: self.add.text(0, 0, 'DESCRIPTION ', {
-                            fontSize: '24px'
+                        content: self.add.text(0, 0, "Education is incredibly EXPENSIVE - will you have enough saved?\n\nEndowment policies HELP you to meet your educational NEEDS.", {
+                            fontSize: '24px',
+                            wordWrap: { width: 450, useAdvancedWrap: false }
                         }),
                         choices: [
                             createLabel(self, 'Do not insure'),
@@ -261,7 +262,8 @@ export default class Level1 extends Phaser.Scene {
                     })
                         .layout()
                         .setScrollFactor(0)
-                        .popUp(1000);
+                        .popUp(1000)
+                        .setDepth(2);
 
                     dialog
                         .on('button.click', function (button, groupName, index) {
