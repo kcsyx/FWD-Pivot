@@ -47,7 +47,7 @@ export default class Level3Random extends Phaser.Scene {
         this.buildingLayer = this.level3random.createStaticLayer("building", this.building, 0, 0).setDepth(-2);
         this.doorLayer = this.level3random.createStaticLayer("door", this.doors, 0, 0);
         this.buildingLayer2 = this.level3random.createStaticLayer("building2", this.building, 0, 0).setDepth(-1);
-        this.decoLayer = this.level3random.createStaticLayer("deco", this.roadDeco, 0, 0).setDepth(-1);
+        this.decoLayer = this.level3random.createStaticLayer("deco", this.roadDeco, 0, 0);
         this.fenceLayer = this.level3random.createStaticLayer("fence", this.hotDogLayer, 0, 0);
         this.windowLayer = this.level3random.createStaticLayer("window", this.hotDogLayer, 0, 0);
 
