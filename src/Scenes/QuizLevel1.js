@@ -25,39 +25,71 @@ export default class QuizLevel1 extends Phaser.Scene {
         this.endMap = false;
         var self = this;
 
-        this.choice1 = this.add.text(275, config.height / 2 - 170, 'choice1', { fontSize: 24, fontFamily: "arcade_classic" });
-        this.choice2 = this.add.text(445, config.height / 2 - 170, 'choice2', { fontSize: 24, fontFamily: "arcade_classic" });
-        this.confirm = this.add.text(445, config.height / 2, 'confirm', { fontSize: 24, fontFamily: "arcade_classic" });
-
+        this.question = this.add.text(100, config.height / 2 - 200, 'Motorcycle  insurance  ONLY  covers  breakdowns', { fontSize: 36, fontFamily: "arcade_classic", wordWrap: { width: 740, useAdvancedWrap: false } });
+        this.choice1 = this.add.text(275, config.height / 2 - 40, 'TRUE', { fontSize: 24, fontFamily: "arcade_classic" });
+        this.choice2 = this.add.text(445, config.height / 2 - 40, 'FALSE', { fontSize: 24, fontFamily: "arcade_classic" });
+        this.confirm = this.add.text(445, config.height / 2 + 70, 'CONFIRM', { fontSize: 24, fontFamily: "arcade_classic" });
+        this.choice1.setColor("#00ff4a");
+        this.choice2.setColor("#fb0909");
         this.choice1.setInteractive();
         this.choice2.setInteractive();
 
         this.choice1.on('pointerdown', function () {
             this.choice = "choice1";
-            this.choice1.setColor("#173028");
-            this.choice2.setColor("white");
+            this.choice1.setStroke("#FFF", 8);
+            this.choice2.setStroke(0);
         }.bind(this));
 
         this.choice2.on('pointerdown', function () {
             this.choice = "choice2";
-            this.choice2.setColor("#173028");
-            this.choice1.setColor("white");
+            this.choice2.setStroke("#FFF", 8);
+            this.choice1.setStroke(0);
         }.bind(this));
 
         this.confirm.on('pointerdown', function () {
             this.endMap = true;
+            this.choice1.removeInteractive();
+            this.choice2.removeInteractive();
             this.confirm.removeInteractive();
-            console.log('Confirm pressed, choice is ' + self.choice);
             if (self.choice == "choice1") {
-                console.log('CORRECT');
-                //GO NEXT SCENE ADD MONEY SET SCOREBOARD
+                self.moneyBags += 350;
+                self.moneyChange = self.add.text(600, 60, "+ 350", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+                self.tweens.add({
+                    targets: self.moneyChange,
+                    alpha: { from: 1, to: 0 },
+                    duration: 4000,
+                    ease: 'Power2'
+                });
+                self.scoreBoard.setText("FWD$: " + self.moneyBags);
+                self.confirm.setText("CORRECT!");
+                self.confirm.setColor("#00ff4a");
+                self.goNext = this.add.text(445, config.height / 2 + 100, 'NEXT', { fontSize: 24, fontFamily: "arcade_classic" });
+                self.goNext.setInteractive();
+                self.goNext.on('pointerdown', function () {
+                    self.scene.start('QuizLevel2', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now });
+                });
+            } else if (self.choice == "choice2") {
+                self.moneyBags = self.moneyBags;
+                self.moneyChange = self.add.text(600, 60, "+ 0", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fb0909' }).setScrollFactor(0);
+                self.tweens.add({
+                    targets: self.moneyChange,
+                    alpha: { from: 1, to: 0 },
+                    duration: 4000,
+                    ease: 'Power2'
+                });
+                self.confirm.setText("WRONG!");
+                self.confirm.setColor("#fb0909");
+                self.goNext = this.add.text(445, config.height / 2 + 100, 'NEXT', { fontSize: 24, fontFamily: "arcade_classic" });
+                self.goNext.setInteractive();
+                self.goNext.on('pointerdown', function () {
+                    self.scene.start('QuizLevel2', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now });
+                });
             }
         }.bind(this));
     }
 
     update() {
         if (this.choice !== undefined) {
-            var self = this;
             if (this.endMap == false) {
                 this.confirm.setInteractive();
             }
