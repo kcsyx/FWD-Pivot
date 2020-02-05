@@ -64,10 +64,10 @@ export default class Level3Random extends Phaser.Scene {
         this.popUp = false;
         this.endMap = false;
         this.endGame = false;
-        this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
+        this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
         this.clock = this.plugins.get('rexClock').add(this);
         this.clock.start(this.clockTime);
-        this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
+        this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
     }
     update() {
         if (this.moneyBags < 0 && this.endGame == false) {

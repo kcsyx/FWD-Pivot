@@ -18,10 +18,10 @@ export default class QuizLevel1 extends Phaser.Scene {
     create() {
         this.choice = undefined;
         this.cameras.main.fadeIn(500);
-        this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
+        this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
         this.clock = this.plugins.get('rexClock').add(this);
         this.clock.start(this.clockTime);
-        this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0);
+        this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
         this.endMap = false;
         var self = this;
 

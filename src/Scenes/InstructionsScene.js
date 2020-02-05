@@ -21,8 +21,6 @@ export default class InstructionsScene extends Phaser.Scene {
         this.background.setInteractive();
         this.backgroundClicked = false;
         this.nextScene = false;
-    }
-    update() {
         if (this.backgroundClicked == false) {
             var self = this;
             this.background.on('pointerdown', function () {
