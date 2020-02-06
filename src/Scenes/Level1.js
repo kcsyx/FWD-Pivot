@@ -145,6 +145,7 @@ export default class Level1 extends Phaser.Scene {
                     })
                         .layout()
                         .setScrollFactor(0)
+                        .setDepth(2)
                         .popUp(1000);
 
                     dialog
