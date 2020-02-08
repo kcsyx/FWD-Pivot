@@ -658,7 +658,7 @@ export default class Level5Random extends Phaser.Scene {
                 if (self.endMap === false) {
                     self.endMap = true;
                     self.cameras.main.on('camerafadeoutcomplete', function () {
-                        self.scene.start('QuizLevel1', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now });
+                        self.scene.start('QuizInstructions', { gender: self.gender, moneyBags: self.moneyBags, clockTime: self.clock.now });
                     });
                 }
             });

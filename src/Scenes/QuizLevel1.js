@@ -16,6 +16,9 @@ export default class QuizLevel1 extends Phaser.Scene {
     }
 
     create() {
+        if (this.moneyBags == undefined) {
+            this.moneyBags = 0;
+        };
         this.choice = undefined;
         this.cameras.main.fadeIn(500);
         this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
@@ -25,7 +28,7 @@ export default class QuizLevel1 extends Phaser.Scene {
         this.endMap = false;
         var self = this;
 
-        this.question = this.add.text(100, config.height / 2 - 180, 'Motorcycle  insurance  ONLY  covers  breakdowns', { fontSize: 36, fontFamily: "arcade_classic", wordWrap: { width: 740, useAdvancedWrap: false } });
+        this.question = this.add.text(100, config.height / 2 - 180, 'Motorcycle  insurance  ONLY  covers  breakdowns', { fontSize: 36, fontFamily: "arcade_classic", wordWrap: { width: 670, useAdvancedWrap: false } });
         this.choice1 = this.add.text(275, config.height / 2 - 10, 'TRUE', { fontSize: 24, fontFamily: "arcade_classic" });
         this.choice2 = this.add.text(445, config.height / 2 - 10, 'FALSE', { fontSize: 24, fontFamily: "arcade_classic" });
         this.confirm = this.add.text(445, config.height / 2 + 100, 'CONFIRM', { fontSize: 24, fontFamily: "arcade_classic" });

@@ -30,9 +30,9 @@ export default class InstructionsScene extends Phaser.Scene {
                 self.instructions2 = self.add.tileSprite(0, 0, config.width, config.height, "instructions2");
                 self.instructions2.setInteractive();
                 self.instructions2.setOrigin(0, 0);
-                var textGameObject = self.add.text(20, 40, 'text', { align: 'center', fontSize: '48px', fontFamily: "arcade_classic", fill: '#fff', wordWrap: { width: 780, useAdvancedWrap: false } });
+                var textGameObject = self.add.text(30, 40, 'text', { align: 'center', fontSize: '48px', fontFamily: "arcade_classic", fill: '#fff', wordWrap: { width: 780, useAdvancedWrap: false } });
                 var typing = self.plugins.get('rexTextTyping').add(textGameObject, {
-                    speed: 35,
+                    speed: 30,
                     typeMode: 0
                 });
                 typing.start('WELCOME  TO  PIVOT! THE  GOAL  OF  THIS  GAME  IS  TO  EARN  AS  MUCH  MONEY  AS  POSSIBLE.\nTRY  TO  SPEND  YOUR  MONEY  WISELY  AND  AVOID  GOING  IN  DEBT.\n\nHAVE  FUN!\n\nCLICK  ANYWHERE  TO  START');
