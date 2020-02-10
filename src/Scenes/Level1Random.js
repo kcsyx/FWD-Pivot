@@ -68,6 +68,9 @@ export default class Level1Random extends Phaser.Scene {
         this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
     }
     update() {
+        if(this.moneyBags < 0) {
+            this.player.vel = 0;
+        }
         if (this.moneyBags < 0 && this.endGame == false) {
             this.endGame = true;
             var self = this;
