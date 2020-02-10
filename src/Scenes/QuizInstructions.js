@@ -13,6 +13,9 @@ export default class QuizInstructionsScene extends Phaser.Scene {
     }
 
     preload() {
+        // load images
+        this.background = this.add.tileSprite(0, 0, config.width, config.height, "instructions2");
+        this.background.setOrigin(0, 0);
     }
 
     create() {
