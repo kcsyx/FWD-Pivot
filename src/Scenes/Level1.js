@@ -54,7 +54,7 @@ export default class Level1 extends Phaser.Scene {
         //Initialize moneybags and amount insured
         this.clock = this.plugins.get('rexClock').add(this);
         this.clock.start();
-        this.moneyBags = 2000;
+        this.moneyBags = 5000;
         this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
         this.scoreBoard = this.add.text(600, 40, "FWD$: " + this.moneyBags, { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
         this.amountInsuredCS = 0;
