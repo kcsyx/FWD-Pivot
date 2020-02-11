@@ -793,7 +793,7 @@ export default class Level5Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'You drove into a pillar, causing major damage to your car!\n\nUnfortunately, you did not insure at all and lost a lot of money.', {
+                            content: self.add.text(0, 0, 'Your car got broken into and require repairs!\n\nUnfortunately, you did not insure at all and lost a lot of money.', {
                                 fontSize: '24px',
                                 wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
@@ -952,7 +952,7 @@ export default class Level5Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'You drove into a pillar, causing major damage to your car!\n\nUnfortunately, you did not insure enough and lost more money.', {
+                            content: self.add.text(0, 0, 'Your car got broken into and require repairs!\n\nUnfortunately, you did not insure enough and lost more money.', {
                                 fontSize: '24px',
                                 wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
@@ -1111,7 +1111,7 @@ export default class Level5Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'You drove into a pillar, causing major damage to your car!\n\nLucky for you, you insured heavily and got back more money!', {
+                            content: self.add.text(0, 0, 'Your car got broken into and require repairs!\n\nLucky for you, you insured heavily and got back more money!', {
                                 fontSize: '24px',
                                 wordWrap: { width: 450, useAdvancedWrap: false }
                             }),

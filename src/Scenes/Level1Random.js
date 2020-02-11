@@ -704,7 +704,7 @@ export default class Level1Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
+                            content: self.add.text(0, 0, 'You do not have any endowment payout and had to pay the university fees!', {
                                 fontSize: '24px',
                                 wordWrap: { width: 450, useAdvancedWrap: false }
                             }),
@@ -780,8 +780,9 @@ export default class Level1Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident ', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'You do not have any endowment payout and had to pay the significant university fees!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450}
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -862,8 +863,9 @@ export default class Level1Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'Your endowment payout exceeds the needed university fees by a significant sum and you profitted!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450}
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -937,8 +939,9 @@ export default class Level1Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'Your endowment payout falls below the needed university fees by a significant sum and you had to top up the difference!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450}
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1019,8 +1022,9 @@ export default class Level1Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Minor accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'Your endowment payout exceeds the needed university fees by a significant sum and you got back some money!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450}
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1094,8 +1098,9 @@ export default class Level1Random extends Phaser.Scene {
                                     bottom: 10
                                 }
                             }),
-                            content: self.add.text(0, 0, 'Major accident', {
-                                fontSize: '24px'
+                            content: self.add.text(0, 0, 'Your endowment payout exceeds the needed university fees by a significant sum and you profitted a lot!', {
+                                fontSize: '24px',
+                                wordWrap: { width: 450}
                             }),
                             choices: [
                                 createLabel(self, 'Close')
