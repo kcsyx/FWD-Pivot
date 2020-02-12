@@ -656,7 +656,7 @@ export default class Level5Random extends Phaser.Scene {
                 }
                 self.scoreBoard.setText('FWD$: ' + self.moneyBags);
             });
-            this.roadFloor.setTileLocationCallback(18, 13, 2, 3, function () {
+            this.roadFloor.setTileLocationCallback(18, 13, 1, 3, function () {
                 self.cameras.main.fadeOut(1000);
                 if (self.endMap === false) {
                     self.endMap = true;
