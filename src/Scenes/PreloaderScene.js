@@ -91,9 +91,18 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('marker', "assets/questmarker.png");
     this.load.spritesheet('maleplayer', 'assets/samplesprite.png', { frameWidth: 34, frameHeight: 34 });
     this.load.spritesheet('femaleplayer', 'assets/femalesamplesprite.png', { frameWidth: 34, frameHeight: 34 });
+    this.load.spritesheet('goldcoin', 'assets/coin_gold.png', {frameWidth: 32, frameHeight: 32});
   }
 
   create() {
+    //Coin spinning animation
+    this.anims.create({
+      key: 'coinspin',
+      frames: this.anims.generateFrameNumbers('goldcoin', {start: 0, end: 7}),
+      frameRate: 13,
+      repeat: -1
+    });
+    
     // Male player animations
     this.anims.create({
       key: 'malestand-left',

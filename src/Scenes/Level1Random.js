@@ -2,6 +2,7 @@ import 'phaser';
 import config from '../Config/config';
 import MalePlayer from '../Objects/MalePlayer';
 import FemalePlayer from '../Objects/FemalePlayer';
+import GoldCoin from '../Objects/GoldCoin';
 
 export default class Level1Random extends Phaser.Scene {
     constructor() {
@@ -33,6 +34,19 @@ export default class Level1Random extends Phaser.Scene {
             this.player = new FemalePlayer(this, 70, 100);
         }
         this.cameras.main.startFollow(this.player);
+        //Coin spawning
+        let coins = this.physics.add.group();
+        const createCoin = (x, y) => {
+            let c = new GoldCoin(this, x, y);
+            coins.add(c);
+        }
+        createCoin(70, 100);
+        createCoin(140, 100);
+        const getCoin = (p, c) => {
+            c.destroy();
+        }
+        this.physics.add.overlap(this.player, coins, getCoin);
+        //End coin spawning
 
         //map
         this.level1random = this.add.tilemap("level1random");
@@ -68,7 +82,7 @@ export default class Level1Random extends Phaser.Scene {
         this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
     }
     update() {
-        if(this.moneyBags < 0) {
+        if (this.moneyBags < 0) {
             this.player.vel = 0;
         }
         if (this.moneyBags < 0 && this.endGame == false) {
@@ -782,7 +796,7 @@ export default class Level1Random extends Phaser.Scene {
                             }),
                             content: self.add.text(0, 0, 'You do not have any endowment payout and had to pay the significant university fees!', {
                                 fontSize: '24px',
-                                wordWrap: { width: 450}
+                                wordWrap: { width: 450 }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -865,7 +879,7 @@ export default class Level1Random extends Phaser.Scene {
                             }),
                             content: self.add.text(0, 0, 'Your endowment payout exceeds the needed university fees by a significant sum and you profitted!', {
                                 fontSize: '24px',
-                                wordWrap: { width: 450}
+                                wordWrap: { width: 450 }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -941,7 +955,7 @@ export default class Level1Random extends Phaser.Scene {
                             }),
                             content: self.add.text(0, 0, 'Your endowment payout falls below the needed university fees by a significant sum and you had to top up the difference!', {
                                 fontSize: '24px',
-                                wordWrap: { width: 450}
+                                wordWrap: { width: 450 }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1024,7 +1038,7 @@ export default class Level1Random extends Phaser.Scene {
                             }),
                             content: self.add.text(0, 0, 'Your endowment payout exceeds the needed university fees by a significant sum and you got back some money!', {
                                 fontSize: '24px',
-                                wordWrap: { width: 450}
+                                wordWrap: { width: 450 }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
@@ -1100,7 +1114,7 @@ export default class Level1Random extends Phaser.Scene {
                             }),
                             content: self.add.text(0, 0, 'Your endowment payout exceeds the needed university fees by a significant sum and you profitted a lot!', {
                                 fontSize: '24px',
-                                wordWrap: { width: 450}
+                                wordWrap: { width: 450 }
                             }),
                             choices: [
                                 createLabel(self, 'Close')
