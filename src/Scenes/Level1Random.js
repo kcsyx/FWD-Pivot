@@ -34,20 +34,6 @@ export default class Level1Random extends Phaser.Scene {
             this.player = new FemalePlayer(this, 70, 100);
         }
         this.cameras.main.startFollow(this.player);
-        //Coin spawning
-        let coins = this.physics.add.group();
-        const createCoin = (x, y) => {
-            let c = new GoldCoin(this, x, y);
-            coins.add(c);
-        }
-        createCoin(70, 100);
-        createCoin(140, 100);
-        const getCoin = (p, c) => {
-            c.destroy();
-        }
-        this.physics.add.overlap(this.player, coins, getCoin);
-        //End coin spawning
-
         //map
         this.level1random = this.add.tilemap("level1random");
         this.physics.world.setBounds(0, 0, this.level1random.widthInPixels, this.level1random.heightInPixels);
@@ -69,7 +55,7 @@ export default class Level1Random extends Phaser.Scene {
         //end map
 
         //Initialize moneybags and amount insured
-        this.arr = ["nH", "minorA", "majorA"]
+        this.arr = ["nH", "minorA", "minorA", "minorA", "minorA", "minorA", "minorA", "minorA", "majorA", "majorA"]
         this.item1 = Phaser.Math.RND.pick(this.arr);
         this.item2 = Phaser.Math.RND.pick(this.arr);
         this.popUp = false;
@@ -80,6 +66,32 @@ export default class Level1Random extends Phaser.Scene {
         this.clock = this.plugins.get('rexClock').add(this);
         this.clock.start(this.clockTime);
         this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
+
+        //Coin spawning
+        let coins = this.physics.add.group();
+        const createCoin = (x, y) => {
+            let c = new GoldCoin(this, x, y);
+            coins.add(c);
+        }
+        createCoin(140, 100);
+        createCoin(320, 100);
+        createCoin(446, 100);
+        createCoin(311, 248);
+        createCoin(302, 480);
+        const getCoin = (p, c) => {
+            this.moneyBags += 200;
+            this.scoreBoard.setText('FWD$: ' + this.moneyBags);
+            this.moneyChange = this.add.text(600, 60, "+ 200", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+            this.tweens.add({
+                targets: this.moneyChange,
+                alpha: { from: 1, to: 0 },
+                duration: 4000,
+                ease: 'Power2'
+            });
+            c.destroy();
+        }
+        this.physics.add.overlap(this.player, coins, getCoin);
+        //End coin spawning
     }
     update() {
         if (this.moneyBags < 0) {

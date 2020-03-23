@@ -2,6 +2,7 @@ import 'phaser';
 import config from '../Config/config';
 import MalePlayer from '../Objects/MalePlayer';
 import FemalePlayer from '../Objects/FemalePlayer';
+import GoldCoin from '../Objects/GoldCoin';
 
 export default class Level4Random extends Phaser.Scene {
     constructor() {
@@ -70,9 +71,35 @@ export default class Level4Random extends Phaser.Scene {
         this.clock = this.plugins.get('rexClock').add(this);
         this.clock.start(this.clockTime);
         this.clockTimer = this.add.text(100, 40, '', { fontSize: '24px', fontFamily: "arcade_classic", fill: '#fff' }).setScrollFactor(0).setDepth(2);
+
+        //Coin spawning
+        let coins = this.physics.add.group();
+        const createCoin = (x, y) => {
+            let c = new GoldCoin(this, x, y);
+            coins.add(c);
+        }
+        createCoin(128, 22);
+        createCoin(128, 325);
+        createCoin(211, 469);
+        createCoin(451, 329);
+        createCoin(587, 249);
+        const getCoin = (p, c) => {
+            this.moneyBags += 200;
+            this.scoreBoard.setText('FWD$: ' + this.moneyBags);
+            this.moneyChange = this.add.text(600, 60, "+ 200", { fontSize: '24px', fontFamily: "arcade_classic", fill: '#00ff4a' }).setScrollFactor(0);
+            this.tweens.add({
+                targets: this.moneyChange,
+                alpha: { from: 1, to: 0 },
+                duration: 4000,
+                ease: 'Power2'
+            });
+            c.destroy();
+        }
+        this.physics.add.overlap(this.player, coins, getCoin);
+        //End coin spawning
     }
     update() {
-        if(this.moneyBags < 0) {
+        if (this.moneyBags < 0) {
             this.player.vel = 0;
         }
         if (this.moneyBags < 0 && this.endGame == false) {

@@ -145,7 +145,7 @@ export default class EndScreen extends Phaser.Scene {
                         loginDialog.destroy();
                         self.finalScore.name = username;
                         self.finalScore.email = email;
-                        //POST data to placeholder api, update api to real one on deployment//
+                        //POST data to placeholder api, update api to real server on deployment//
                         fetch('https://jsonplaceholder.typicode.com/posts', {
                             method: 'POST',
                             body: JSON.stringify(self.finalScore),
